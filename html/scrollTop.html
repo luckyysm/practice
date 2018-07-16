@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery.cookie.js"></script>
+    <style>
+        html,body{
+            height: 100%;
+        }
+        li{
+            background-color: green;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+
+    <ul id="list">
+        <li><a href="http://m.i-ev.com">136981</a></li>
+        <li><a href="http://m.i-ev.com">今天是周五</a></li>
+        <li><a href="http://m.i-ev.com">呵呵呵呵</a></li>
+        <li><a href="http://m.i-ev.com">呵呵呵呵</a></li>
+        <li><a href="http://m.i-ev.com">呵呵呵呵</a></li>
+        <li><a href="http://m.i-ev.com">ahdfwiofegwof</a></li>
+        <li><a href="http://m.i-ev.com">呵呵呵呵</a></li>
+        <li><a href="http://m.i-ev.com">呵呵呵呵</a></li>
+        <li><a href="http://m.i-ev.com">呵呵呵呵</a></li>
+        <li><a href="http://m.i-ev.com">拜拜</a></li>
+
+    </ul>
+</div>
+<script>
+    $(function () {
+        var str = window.location.href;
+        str = str.substring(str.lastIndexOf("/") + 1);
+
+        console.log($.cookie(str));
+        if ($.cookie(str)) {
+//            console.log("=======");
+//            console.log($.cookie(str));
+//            console.log(typeof($.cookie(str)));
+
+          $("html,body").animate({ scrollTop: $.cookie(str) }, 3000);
+
+            console.log($("html,body").scrollTop())
+
+
+        }
+        else {
+        }
+
+    });
+
+    $(window).scroll(function () {
+        var str = window.location.href;
+        str = str.substring(str.lastIndexOf("/") + 1);
+
+        var top = $(document).scrollTop();
+
+
+        $.cookie(str, top, {expires: 7, path: '/' });
+
+        console.log($.cookie(str));
+        return $.cookie(str);
+    });
+//    $("#list").on("click","li",function(){
+//        console.log($(document).scrollTop());
+//    })
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+* {
+  padding: 0;
+  margin: 0;
+  color: white;
+}
+body {
+  background-color: #0c1531;
+}
+.wrap {
+  min-width: 1701px;
+  border: 1px solid transparent;
+  margin: 0 auto;
+  background: url("../images/background.jpg") no-repeat;
+  background-size: cover;
+}
+.wrap > div {
+  width: 90%;
+  margin: 0 auto;
+}
+.jcontent {
+  display: none;
+}
+.jcontent video {
+  display: none;
+}
+.datashow {
+  background: url("../images/bar.png") no-repeat;
+  background-size: 100% 100%;
+  margin-top: 9.1%;
+  line-height: 75px;
+}
+.datashow ul {
+  color: #fff;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-around;
+  width: 95%;
+  margin: 0 auto;
+}
+.datashow ul li {
+  letter-spacing: 3px;
+  font-size: 24px;
+  padding: 0 10px;
+}
+.datashow ul li span {
+  color: #0df1fe;
+  padding: 0 6px;
+  font-weight: 500;
+  font-size: 35px;
+}
+.charts {
+  display: flex;
+  padding: 3.8% 0;
+}
+.charts .huan-chart {
+  flex-direction: column;
+  justify-content: space-around;
+  width: 17.2%;
+  margin: 0 0 0 0.5%;
+}
+.charts .huan-chart .huan {
+  width: 100%;
+  height: 32%;
+  background-image: url("../images/one.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 100% !important;
+  padding-top: 2%;
+  box-sizing: border-box;
+}
+.charts .huan-chart #huan-chart1 {
+  margin: 3% 0 0 0.5%;
+}
+.charts .huan-chart #huan-chart2,
+.charts .huan-chart #huan-chart3 {
+  margin: 5% 0 0 0.5%;
+  padding-top: 4%;
+}
+.charts .c-two {
+  width: 28.8%;
+}
+.charts .c-two #map {
+  background-image: url("../images/map.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 100% !important;
+  width: 96%;
+  height: 55%;
+  margin: 0 auto;
+  margin-top: 1.82%;
+}
+.charts .c-two #table {
+  background-image: url("../images/two.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 100% !important;
+  color: white;
+  width: 96%;
+  height: 44.8%;
+  overflow: hidden;
+  margin: 2% auto 0;
+  position: relative;
+}
+.charts .c-two #table .form {
+  width: 90%;
+  height: 91%;
+  overflow: hidden;
+  padding-top: 4%;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+.charts .c-two #table .form .record_title {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  background-color: #133c67;
+}
+.charts .c-two #table .form .record_title ul::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.charts .c-two #table .form .record_title ul li {
+  font-weight: 600;
+  float: left;
+  height: 38px;
+  line-height: 38px;
+  width: 25%;
+}
+.charts .c-two #table .form .record_list {
+  width: 104%;
+  height: 79%;
+  position: absolute;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.charts .c-two #table .form .record_list ul li {
+  height: 38px;
+  float: left;
+  width: 25%;
+  line-height: 38px;
+}
+.charts .c-two #table .form .record_list ul li:nth-child(2n+1) {
+  color: #00cfd4;
+}
+.charts .c-two #table .form .record_list ul li:nth-child(2n) {
+  color: #257ddd;
+}
+.charts .c-two #table .form .record_list ul::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.charts .c-two #table .form .record_list ul:nth-child(2n) {
+  background-color: #0d2050;
+}
+.charts .c-two #table .form .record_list ul:nth-child(2n+1) {
+  background-color: #10255f;
+}
+.charts .c-three {
+  width: 17.2%;
+}
+.charts .c-three .strack {
+  width: 100%;
+  height: 32%;
+  padding-top: 2%;
+  background-image: url("../images/one.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 100% !important;
+  box-sizing: border-box;
+}
+.charts .c-three #stacking-1 {
+  margin-top: 3%;
+}
+.charts .c-three #stacking-2 {
+  margin-top: 5%;
+}
+.charts .c-three #stacking-3 {
+  margin-top: 5%;
+}
+.charts .c-four {
+  width: 18%;
+}
+.charts .c-four #zhezhu {
+  background-image: url("../images/four.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 100% !important;
+  height: 332px;
+  margin-top: 2%;
+  margin-left: 10px;
+}
+.charts .c-four #zhu-2 {
+  width: 97%;
+  height: 333px;
+  margin-top: 5%;
+}
+.charts .c-five {
+  width: 18%;
+}
+.charts .c-five .zhe {
+  width: 95%;
+  height: 222px;
+  margin-left: 6px;
+}
+.charts .c-five #zhe1 {
+  margin-top: 5%;
+}
+.charts .c-five #zhe2 {
+  margin-top: -3%;
+}
+.charts .c-five #zhe3 {
+  margin-top: 6%;
+}

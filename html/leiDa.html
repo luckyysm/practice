@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			 * {
+            box-sizing: border-box;
+            }
+            html {
+            height: 100%;
+            /*background-color: #111;*/
+            background-color: #102660;
+            font-size: 10px;
+            }
+            body {
+            /*background-image: linear-gradient(0deg, transparent 24%, rgba(32, 255, 77, 0.15) 25%, rgba(32, 255, 77, 0.15) 26%, transparent 27%, transparent 74%, rgba(32, 255, 77, 0.15) 75%, rgba(32, 255, 77, 0.15) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(32, 255, 77, 0.15) 25%, rgba(32, 255, 77, 0.15) 26%, transparent 27%, transparent 74%, rgba(32, 255, 77, 0.15) 75%, rgba(32, 255, 77, 0.15) 76%, transparent 77%, transparent);*/
+            /*background-image: linear-gradient(0deg, transparent 24%, rgba(33, 150, 243, 0.26) 25%, rgba(33, 150, 243, 0.26) 26%, transparent 27%, transparent 74%, rgba(33, 150, 243, 0.26) 75%, rgba(33, 150, 243, 0.26) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(140, 147, 166, 0.51) 25%, rgba(140, 147, 166, 0.51) 26%, transparent 27%, transparent 74%, rgba(140, 147, 166, 0.51) 75%, rgba(140, 147, 166, 0.51) 76%, transparent 77%, transparent);*/
+            background-size: 7rem 7rem;
+            background-position: -5.2rem -5.2rem;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            padding: 0;
+            margin: 0;
+            font-size: 1.6rem;
+            }
+            .radar {
+            /*background: -webkit-radial-gradient(center, rgba(32, 255, 77, 0.3) 0%, rgba(32, 255, 77, 0) 75%), -webkit-repeating-radial-gradient(rgba(32, 255, 77, 0) 5.8%, rgba(32, 255, 77, 0) 18%, #20ff4d 18.6%, rgba(32, 255, 77, 0) 18.9%), -webkit-linear-gradient(90deg, rgba(32, 255, 77, 0) 49.5%, #20ff4d 50%, #20ff4d 50%, rgba(32, 255, 77, 0) 50.2%), -webkit-linear-gradient(0deg, rgba(32, 255, 77, 0) 49.5%, #20ff4d 50%, #20ff4d 50%, rgba(32, 255, 77, 0) 50.2%);*/
+            background: -webkit-radial-gradient(center, rgba(3, 248, 255, 0.5) 0%, rgba(32, 255, 77, 0) 5%),
+            -webkit-repeating-radial-gradient(rgba(32, 255, 77, 0) 0%, rgba(32, 255, 77, 0) 23%, #00f9ff 23.6%, rgba(32, 255, 77, 0) 23.9%),
+            -webkit-linear-gradient(90deg, rgba(32, 255, 77, 0) 49.5%, #00f9ff 50%, #00f9ff 50%, rgba(32, 255, 77, 0) 50.2%),
+            -webkit-linear-gradient(0deg, rgba(32, 255, 77, 0) 49.5%, #00f9ff 50%, #00f9ff 50%, rgba(32, 255, 77, 0) 50.2%); 
+            /*background: radial-gradient(center, rgba(32, 255, 77, 0.3) 0%, rgba(32, 255, 77, 0) 75%), repeating-radial-gradient(rgba(32, 255, 77, 0) 5.8%, rgba(32, 255, 77, 0) 18%, #20ff4d 18.6%, rgba(32, 255, 77, 0) 18.9%), linear-gradient(90deg, rgba(32, 255, 77, 0) 49.5%, #20ff4d 50%, #20ff4d 50%, rgba(32, 255, 77, 0) 50.2%), linear-gradient(0deg, rgba(32, 255, 77, 0) 49.5%, #20ff4d 50%, #20ff4d 50%, rgba(32, 255, 77, 0) 50.2%);*/
+            background: radial-gradient(center, rgba(3, 248, 255, 0.5) 0%, rgba(32, 255, 77, 0) 5%),
+            repeating-radial-gradient(rgba(32, 255, 77, 0) 5.8%, rgba(32, 255, 77, 0) 23%, #20ff4d 23.6%, rgba(32, 255, 77, 0) 23.9%), 
+            linear-gradient(90deg, rgba(32, 255, 77, 0) 49.5%, #20ff4d 50%, #20ff4d 50%, rgba(32, 255, 77, 0) 50.2%), 
+            linear-gradient(0deg, rgba(32, 255, 77, 0) 49.5%, #20ff4d 50%, #20ff4d 50%, rgba(32, 255, 77, 0) 50.2%);
+            width: 75vw;
+            height: 75vw;
+            max-height: 75vh;
+            max-width: 75vh;
+            position: relative;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 0.2rem solid #01f8ff;
+            box-shadow: 0 0 35px #01f8ff;
+            overflow: hidden;
+            }
+            .radar_inner{
+                width:100%;
+                height:100%;
+            }
+            .radar_inner::before{
+                content: ' ';
+                display: block;
+                position: absolute;
+                width: 100%;
+                height: 4%;
+                background: url(../images/heng_line.png) no-repeat center;
+                top: 50%;
+                left: 0;
+                background-size: cover;
+                margin-top: -2%;
+            }
+            .radar_inner::after{
+                content: ' ';
+                display: block;
+                position: absolute;
+                width: 100%;
+                height: 4%;
+                background: url(../images/heng_line.png) no-repeat center;
+                transform: rotate(90deg);
+                top: 50%;
+                left: 0;
+                background-size: cover;
+                margin-top: -2%;
+            }
+
+            .radar:before {
+            content: ' ';
+            display: block;
+            position: absolute;
+            border-radius: 50%;
+            /*animation: blips 5s infinite;*/
+            width:100%;
+            height:4%;
+            /* background:url("../images/heng_line.png") no-repeat; */
+            animation-timing-function: linear;
+            animation-delay: 1.4s;
+            }
+            .radar:after {
+            content: ' ';
+            display: block;
+            background-image: linear-gradient(44deg, rgba(0, 255, 51, 0) 50%, #00f9ff 100%);
+            width: 50%;
+            height: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: radar-beam 5s infinite;
+            animation-timing-function: linear;
+            transform-origin: bottom right;
+            border-radius: 100% 0 0 0;
+            }
+
+            @keyframes radar-beam {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+            }
+            @keyframes blips {
+               
+
+            14% {
+                /*background: linear-gradient(0deg, transparent 24%, rgba(140, 147, 166, 0.51) 25%, rgba(140, 147, 166, 0.51) 26%, transparent 27%, transparent 74%, rgba(140, 147, 166, 0.51) 75%, rgba(140, 147, 166, 0.51) 76%, transparent 77%, transparent);*/
+                background: radial-gradient(2vmin circle at 75% 70%, #ffffff 10%, #20ff4d 30%, rgba(255, 255, 255, 0) 100%);
+            }
+            14.0002% {
+                background: radial-gradient(2vmin circle at 75% 70%, #ffffff 10%, #20ff4d 30%, rgba(255, 255, 255, 0) 100%), radial-gradient(2vmin circle at 63% 72%, #ffffff 10%, #20ff4d 30%, rgba(255, 255, 255, 0) 100%);
+            }
+            25% {
+                background: radial-gradient(2vmin circle at 75% 70%, #ffffff 10%, #20ff4d 30%, rgba(255, 255, 255, 0) 100%), radial-gradient(2vmin circle at 63% 72%, #ffffff 10%, #20ff4d 30%, rgba(255, 255, 255, 0) 100%), radial-gradient(2vmin circle at 56% 86%, #ffffff 10%, #20ff4d 30%, rgba(255, 255, 255, 0) 100%);
+            }
+            26% {
+                background: radial-gradient(2vmin circle at 75% 70%, #ffffff 10%, #20ff4d 30%, rgba(255, 255, 255, 0) 100%), radial-gradient(2vmin circle at 63% 72%, #ffffff 10%, #20ff4d 30%, rgba(255, 255, 255, 0) 100%), radial-gradient(2vmin circle at 56% 86%, #ffffff 10%, #20ff4d 30%, rgba(255, 255, 255, 0) 100%);
+                opacity: 1;
+            }
+            100% {
+                background: radial-gradient(2vmin circle at 75% 70%, #ffffff 10%, #20ff4d 30%, rgba(255, 255, 255, 0) 100%), radial-gradient(2vmin circle at 63% 72%, #ffffff 10%, #20ff4d 30%, rgba(255, 255, 255, 0) 100%), radial-gradient(2vmin circle at 56% 86%, #ffffff 10%, #20ff4d 30%, rgba(255, 255, 255, 0) 100%);
+                opacity: 0;
+            }
+            }
+			#wrap{width:80vw; height:80vw;max-height: 80vh;max-width: 80vh; border:2px solid #000; margin:100px auto;border-radius:50%; position:relative;}
+			#wrap ul{margin:0; padding:0;width:80vw; height:80vw;max-height: 80vh;max-width: 80vh; position:absolute; list-style:none;}
+			#wrap ul li{width:2px;  height:12px; background:#F44336; position:absolute; left:99px; top: 0;-webkit-transform-origin:center 260px;}
+	        #wrap ul li:nth-of-type(1){
+	        	transform: rotate(0);
+	        	-webkit-transform: rotate(-4deg);
+    			left: 125px
+	        	}
+	        #wrap ul li:nth-of-type(2){-webkit-transform: rotate(6deg);}
+	        #wrap ul li:nth-of-type(3){-webkit-transform: rotate(12deg);}   
+	        #wrap ul li:nth-of-type(4){-webkit-transform: rotate(18deg);}
+	        #wrap ul li:nth-of-type(5){-webkit-transform: rotate(24deg);}
+	        #wrap ul li:nth-of-type(6){-webkit-transform: rotate(30deg);}
+	        #wrap ul li:nth-of-type(7){-webkit-transform: rotate(36deg);}
+	        #wrap ul li:nth-of-type(8){-webkit-transform: rotate(42deg);}
+	        /*#wrap ul li:nth-of-type(5n+1){ height:12px;}*/
+		</style>
+	</head>
+	<body>
+		
+		<div id="wrap">
+			<ul>
+	    		<li></li>
+	    		<li></li>
+	    		
+	    	</ul>
+		    <div class="radar">
+                <div class="radar_inner"></div>
+            </div>
+		</div>			
+	</body>
+</html>

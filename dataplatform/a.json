@@ -1,0 +1,12 @@
+{
+  "play":{
+    "money": "0",
+    "chargeTime": "0",
+    "action": "启动充电",
+    "stationName": "",
+    "talk": "用户406在特来电启动充电",
+    "time": "2017-08-31 14:59:35",
+    "type": "特来电",
+    "userId": "406"
+  }
+}

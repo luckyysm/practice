@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object</title>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/object.js"></script>
+    
+</head>
+<body>
+    <div id="box">点我</div>
+    <script>
+        // function Obj(json){
+        //     this.name = json.name,
+        //     this.age = json.age,
+        //     this.Hello = function () {
+        //         alert("nihao");
+        //         return "Hello" + this.name;
+        //     }
+            
+        // }
+
+        var obj = new Obj({
+            name:"shuangnan ",
+            age:"22",
+    
+        })
+        // obj.Hello();
+
+        $("#box").click(function(){
+            text("123");
+        })
+        var lastTime = 0;
+        var currTime = new Date().getTime();
+        var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+        console.log(new Date().getTime());
+        console.log(timeToCall);
+
+    </script>
+    
+
+    
+</body>
+</html>

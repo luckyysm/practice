@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>oninput</title>
+    <script src="../js/jquery.min.js"></script>
+    <style>
+        .box{
+            width:260px;
+
+        }
+        .input,.tips,#sele{
+            width:100%;
+        }
+        .tips{
+            /*height: 400px;*/
+            background-color: lightseagreen;
+            /*display: none;*/
+
+        }
+        #sele{
+            box-sizing: border-box;
+        }
+        .tips >p{
+            margin:0;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="input"><input type="text" id="sele"></div>
+    <div class="tips">
+
+
+    </div>
+</div>
+<script>
+
+    $("#sele").bind("input propertychange",function(){
+        var inputText=$("#sele").val().trim();
+//        console.log(inputText);
+        $.ajax({
+            url:"../json/movie.json",
+            type:"GET",
+            dataType:"json",
+            data:{cinemaName:inputText},
+            success:function(data){
+//                console.log(data);
+//                console.log(data.ciemaNames);
+                $(".tips").empty();
+                $.each(data,function(index, value){
+                    console.log(value);
+                    for (var i in value){
+                        console.log(i);
+                        console.log(value[i]);
+                        var p="<p>"+value[i]+"</p>";
+                        $(".tips").append(p);
+
+                    }
+
+
+                })
+
+
+            }
+        })
+
+
+    });
+    //p元素点击事件
+    $(".tips").on("click","p",function(){
+        console.log(this);
+        var con=$(this).text();
+        $("#sele").val(con)
+    })
+
+</script>
+</body>
+</html>

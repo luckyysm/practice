@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>maxstr</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+</head>
+<body>
+    输入：<input type="text" id = 'input1' >  值：<input type="text" id = 'input2' >
+</body>
+<script>
+    //沉迷于其他方法没有心情写注释*-* 
+    //补：一个不用注释就可以完全理解的方法 注释岂不显得更臃肿 嗯~ o(*￣▽￣*)o
+    //主要是你知道了，这个问题的精髓，理解快
+   function lengthOfLongestSubstring(s) {
+    var data = s.split('');
+        var tempmax = 1;
+        if(!data.length){return 0;}
+        for(var i=0;i<data.length;i++){
+              var str_arr = new Array();
+              str_arr.push(data[i]);
+              for(var j=(i+1);j<data.length;j++){
+                   if(data[j]==data[i]){
+                        
+                        var temp = j-i;
+                        if(tempmax<temp){
+                            tempmax = temp;
+                        }
+                        break;
+                   }else{
+                         if(str_arr.indexOf(data[j])==-1){
+                            temp2 = j-i+1;
+                            str_arr.push(data[j]);
+                            if(tempmax<temp2){
+                                tempmax = temp2;
+                            }
+                         }else{
+                            break;
+                         }
+
+                   }
+              }
+        }
+         console.log(tempmax);
+        return tempmax;
+   };
+lengthOfLongestSubstring('abcabcbb');
+// lengthOfLongestSubstring('bbbbbb');
+// lengthOfLongestSubstring('pwwkew');
+
+
+function lengthOfLongestSubstring2(s){
+    let stack = [], m = s.split(''), ticker = 0, maxCount = 0, i = 0
+    
+    for(i; i < m.length; i++) {
+        let cur = m[i], q = stack.indexOf(cur)
+        if (q == -1) {
+            stack.push(cur)
+            ticker = stack.length
+            if (ticker > maxCount) {
+                maxCount = ticker
+            }
+        } else {
+            stack.splice(0, q + 1)
+            stack.push(cur)
+            ticker = stack.length
+        }
+    }
+    console.log(maxCount);
+    return maxCount
+
+}
+
+
+  lengthOfLongestSubstring2('abcabcbb');
+  lengthOfLongestSubstring2('bbbbbb');
+  lengthOfLongestSubstring2('pwwkew');
+
+
+ function lengthOfLongestSubstring3(s) {
+    if(s===""){return 0};
+    var arr = s.split("");
+    var newarr = [ arr[0] ];
+    var newstr = arr[0];
+    var length =1; //字符串的长度
+    var index = 0; //重复下标
+    var substr = ""; //截取之后的字符串
+
+    for (var i = 0; i< arr.length-1; i++){
+ 
+            newstr = newarr.join("");
+       
+            index = newstr.indexOf(arr[i+1]);
+ 
+            //下一位与之前的字符串是否有某个字节相同
+            if(index > -1){
+                length = Math.max(newstr.length,length);
+                newstr = newstr + arr[i+1];
+                substr = newstr.substring(index+1);
+
+                newarr = substr.split("");
+
+            }else{
+                newarr.push(arr[i+1]);
+
+            }
+
+    }
+    return (Math.max(length,newarr.length));
+    
+};
+
+
+  lengthOfLongestSubstring3('abcabcbb');
+  lengthOfLongestSubstring3('bbbbbb');
+  lengthOfLongestSubstring3('pwwkew');
+
+
+
+  function get_length(){
+        console.log("change");
+        var str = document.getElementById('input1').value;
+        var strlen = lengthOfLongestSubstring3(str);
+        document.getElementById("input2").value = strlen;
+  }
+  document.getElementById("input1").oninput = function(){
+      get_length();
+  }
+
+</script>
+</html>

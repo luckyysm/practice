@@ -1,0 +1,1919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>聚能充大数据监测平台</title>
+    <link rel="stylesheet" href="css/init.css">
+    <link rel="stylesheet/less" href="css/index.less?v=1.2">
+    <script type="text/javascript" src="js/sockjs.min.js"></script>
+    <script type="text/javascript" src="js/stomp.js"></script>
+    <script type="text/javascript" src="js/countUp.js"></script>
+</head>
+<body>
+<div class="wrap">
+    <div>
+        <div class="jcontent">
+            <video id="media" src="http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=5&text=请稍后我们将为您播报内容" controls>
+                <source src="video/video.mp4" type="video/mp4" />
+            </video>
+        </div>
+        <div class="datashow">
+            <ul>
+                <li>充电订单<span id="payNum">100000</span>单</li>
+                <li>累计充电电量<span id="power">124512.66</span>度</li>
+                <li>充电金额<span id="money">80000</span>元</li>
+                <li>可支持充电桩数量<span id="pileNum">21548</span>个</li>
+            </ul>
+        </div>
+        <div class="charts">
+            <div class="huan-chart">
+                <div id="huan-chart1" class="huan"></div>
+                <div id="huan-chart2" class="huan"></div>
+                <div id="huan-chart3" class="huan"></div>
+            </div>
+            <div class="c-two">
+                <div id="map"></div>
+                <div id="table">
+                    <div class="form">
+                        <!--<table  cellpadding="0" cellspacing="0" align="center" id="table1" class="table">-->
+                            <!--&lt;!&ndash;<thead>&ndash;&gt;-->
+                            <!--<tr>-->
+                                <!--<th>播报时间</th>-->
+                                <!--<th>用户ID</th>-->
+                                <!--<th>运营商</th>-->
+                                <!--<th>事件</th>-->
+                            <!--</tr>-->
+                        <!--</table>-->
+                        <div class="record_title">
+                            <ul>
+                                <li>播报时间</li>
+                                <li>用户ID</li>
+                                <li>运营商</li>
+                                <li>事件</li>
+                            </ul>
+                        </div>
+                        <!--<ul>-->
+                        <!--<li></li>-->
+                        <!--</ul>-->
+                        <div class="record_list">
+                            <ul>
+                                <li>1</li>
+                                <li>1</li>
+                                <li>1</li>
+                                <li>1</li>
+                            </ul>
+                            <ul>
+                                <li>1</li>
+                                <li>1</li>
+                                <li>1</li>
+                                <li>1</li>
+                            </ul>
+                            <ul>
+                                <li>1</li>
+                                <li>1</li>
+                                <li>1</li>
+                                <li>1</li>
+                            </ul>
+                            <ul>
+                                <li>1</li>
+                                <li>1</li>
+                                <li>1</li>
+                                <li>1</li>
+                            </ul>
+                            <ul>
+                                <li>1</li>
+                                <li>1</li>
+                                <li>1</li>
+                                <li>1</li>
+                            </ul>
+                            <ul>
+                                <li>1</li>
+                                <li>1</li>
+                                <li>1</li>
+                                <li>1</li>
+                            </ul>
+                            <ul>
+                                <li>1</li>
+                                <li>1</li>
+                                <li>1</li>
+                                <li>1</li>
+                            </ul>
+                            <ul>
+                                <li>1</li>
+                                <li>1</li>
+                                <li>1</li>
+                                <li>1</li>
+                            </ul>
+                            <ul>
+                                <li>1</li>
+                                <li>1</li>
+                                <li>1</li>
+                                <li>1</li>
+                            </ul>
+                        </div>
+
+                        <!--<table  cellpadding="0" cellspacing="0" align="center" id="table2" class="table">-->
+                            <!--<tr>-->
+                                <!--<td>1213</td>-->
+                                <!--<td>1213</td>-->
+                                <!--<td>1213</td>-->
+                                <!--<td>1213</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>1213</td>-->
+                                <!--<td>1213</td>-->
+                                <!--<td>1213</td>-->
+                                <!--<td>1213</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>1213</td>-->
+                                <!--<td>1213</td>-->
+                                <!--<td>1213</td>-->
+                                <!--<td>1213</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>1213</td>-->
+                                <!--<td>1213</td>-->
+                                <!--<td>1213</td>-->
+                                <!--<td>1213</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>1213</td>-->
+                                <!--<td>1213</td>-->
+                                <!--<td>1213</td>-->
+                                <!--<td>1213</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>1213</td>-->
+                                <!--<td>1213</td>-->
+                                <!--<td>1213</td>-->
+                                <!--<td>1213</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>1213</td>-->
+                                <!--<td>1213</td>-->
+                                <!--<td>1213</td>-->
+                                <!--<td>1213</td>-->
+                            <!--</tr>-->
+
+                            <!--<tr>-->
+                                <!--<td>3</td>-->
+                                <!--<td>13</td>-->
+                                <!--<td>123</td>-->
+                                <!--<td>13</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>3</td>-->
+                                <!--<td>1gd</td>-->
+                                <!--<td>12dgfggr3</td>-->
+                                <!--<td>121rgr3</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>sdjcbj</td>-->
+                                <!--<td>撒旦吧</td>-->
+                                <!--<td>是v从</td>-->
+                                <!--<td>我</td>-->
+                            <!--</tr>-->
+                        <!--</table>-->
+                    </div>
+                        <!--</thead>-->
+                        <!--<tbody class="tlist">-->
+
+                        <!--</tbody>-->
+
+                </div>
+            </div>
+            <div class="c-three">
+                <div id="stacking-1" class="strack"></div>
+                <div id="stacking-2" class="strack"></div>
+                <div id="stacking-3" class="strack"></div>
+            </div>
+            <div class="c-four">
+                <div id="zhezhu"></div>
+                <div id="zhu-2"></div>
+            </div>
+            <div class="c-five">
+                <div id="zhe1" class="zhe"></div>
+                <div id="zhe2" class="zhe"></div>
+                <div id="zhe3" class="zhe"></div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/less.min.js"></script>
+<script src="js/echarts.js"></script>
+<script src="js/echarts-gl.js"></script>
+<script>
+
+    var fontSize=14,fontLegend=12;
+    //环形图
+    var chart1 = echarts.init(document.getElementById('huan-chart1'));
+    var chart2 = echarts.init(document.getElementById('huan-chart2'));
+    var chart3 = echarts.init(document.getElementById('huan-chart3'));
+    function option1(values,color,name) {
+        var option1 = {
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b}: {c} ({d}%)"
+            },
+            title: {
+                text: '充电桩运营商占比情况',
+                left: 'center',
+                top: '2%',
+                textStyle: {
+                    color: '#ffffff',
+                    fontSize:fontSize
+
+                }
+            },
+
+//            color:color,
+            color:['#0d9bed','#1ad5f8','#06cbc5','#285ce0','#3a5173'],
+
+            legend: {
+                orient: 'vertical',
+                x: '66%',
+                y: '37%',
+//                data:name,
+//                data:['国家电网','特来电','星星','联合电动','其他'],
+                data:[
+                    {
+                        name:'国家电网',
+                        icon:'circle'
+                    },
+                    {
+                        name:'特来电',
+                        icon:'circle'
+                    },
+                    {
+                        name:'星星',
+                        icon:'circle'
+                    },
+                    {
+                        name:'联合电动',
+                        icon:'circle'
+                    },{
+                        name:'其他',
+                        icon:'circle'
+                    }
+
+
+                ],
+                textStyle: {    //图例文字的样式
+                    color: '#ffffff',
+                    fontSize: fontLegend
+                }
+
+            },
+            series: [
+                {
+                    name: '',
+                    type: 'pie',
+                    radius: ['35%', '70%'],
+                    center: ['35%', '55%'],
+                    avoidLabelOverlap: false,
+                    label: {
+                        normal: {
+
+                            position: 'inner',
+                            formatter: '{d}%',
+                            show: false
+//                            position: 'center'
+
+                        },
+                        emphasis: {
+                            show: true,
+                            textStyle: {
+                                fontSize: '14',
+                                fontWeight: 'bold'
+                            }
+                        }
+                    },
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+//                    data: values
+                    data: [
+                        {
+                            value:1000,
+                            name:'国家电网'
+                        },
+                        {
+                            value:120,
+                            name:'特来电'
+                        },
+                        {
+                            value:550,
+                            name:'星星'
+                        },
+                        {
+                            value:5641,
+                            name:'联合电动'
+                        },
+                        {
+                            value:115,
+                            name:'其他'
+                        }
+
+                    ]
+                }
+            ]
+        };
+
+        chart1.setOption(option1);
+
+    }
+    function option11(values,name,number) {
+        var option11 = {
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b}: {c} ({d}%)"
+            },
+            title: {
+                text: '交流桩：'+number+'个',
+                left: 'center',
+                top: '0%',
+                textStyle: {
+                    color: '#ffffff',
+                    fontSize:fontSize
+
+
+                }
+            },
+            color: ['#00b4ff', '#ecfa1a', '#3d6593'],
+            legend: {
+                orient: 'vertical',
+                x: '66%',
+                y: '57%',
+//                data: name,
+                data: ['使用中','空闲','故障'],
+                textStyle: {    //图例文字的样式
+                    color: '#ffffff',
+                    fontSize: fontLegend
+                }
+            },
+            series: [
+                {
+                    name:'',
+                    type: 'pie',
+                    radius: ['35%', '70%'],
+                    center: ['35%', '55%'],
+                    avoidLabelOverlap: false,
+                    label: {
+                        normal: {
+                            show: false,
+                            position: 'center'
+                        },
+                        emphasis: {
+                            show: true,
+                            textStyle: {
+                                fontSize: '20',
+                                fontWeight: 'bold'
+                            }
+                        }
+                    },
+                    labelLine: {
+//                    show:true,
+                        normal: {
+                            show: false,
+                            length: 20
+                        }
+                    },
+//                    data: values
+                    data: [
+                        {
+                            value:550,
+                            name:'使用中'
+                        },
+                        {
+                            value:641,
+                            name:'空闲'
+                        },
+                        {
+                            value:115,
+                            name:'故障'
+                        }
+                    ]
+                }
+            ]
+        };
+        chart2.setOption(option11);
+    }
+    function option12(values,name,number) {
+        var option12 = {
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b}: {c} ({d}%)"
+            },
+            title: {
+                text: '直流桩：'+number+'个',
+                left: 'center',
+                top: '0%',
+                textStyle: {
+                    color: '#ffffff',
+                    fontSize:fontSize
+
+
+                }
+            },
+            color: ['#00b4ff', '#ecfa1a', '#3d6593'],
+            legend: {
+                orient: 'vertical',
+                x: '66%',
+                y: '57%',
+//                data: name,
+                data: ['使用中','空闲','故障'],
+                textStyle: {    //图例文字的样式
+                    color: '#ffffff',
+                    fontSize: fontLegend
+                }
+            },
+            series: [
+                {
+                    name:'',
+                    type: 'pie',
+                    radius: ['35%', '70%'],
+                    center: ['35%', '55%'],
+                    avoidLabelOverlap: false,
+                    label: {
+                        normal: {
+                            show: false,
+                            position: 'center'
+                        },
+                        emphasis: {
+                            show: true,
+                            textStyle: {
+                                fontSize: '20',
+                                fontWeight: 'bold'
+                            }
+                        }
+                    },
+                    labelLine: {
+//                    show:true,
+                        normal: {
+                            show: false,
+                            length: 20
+                        }
+                    },
+//                    data: values
+                    data:[
+                        {
+                            value:550,
+                            name:'使用中'
+                        },
+                        {
+                            value:641,
+                            name:'空闲'
+                        },
+                        {
+                            value:115,
+                            name:'故障'
+                        }
+                    ]
+                }
+            ]
+        };
+        chart3.setOption(option12);
+    }
+
+    //地图
+    function map(dataArray) {
+        $.get('china.json', function (chinaJson) {
+            echarts.registerMap('china', chinaJson);
+            var map = echarts.init(document.getElementById('map'));
+                map.setOption( option = {
+                    title: {
+                        text: '全国充电数据情况星点图',
+                        left: 'center',
+                        top: '3%',
+                        textStyle: {
+                            color: '#fff',
+                            fontSize:fontSize
+
+                        }
+                    },
+                    tooltip: {},
+                    legend: {
+                        orient:'vertical',
+                        left: '6%',
+                        bottom: '8%',
+                        data: ['强', '中', '弱'],
+                        textStyle: {
+                            color: '#ccc'
+                        }
+                    },
+                    geo: {
+                        map: 'china',
+                        roam: false,
+                        label: {
+                            emphasis: {
+                                show: false
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+//                                areaColor: '#323c48',
+                                areaColor: '#122e6f',//'#85A6E6',//区域颜色
+                                //areaColor: 'transparent',//'#85A6E6',//区域颜色
+                                borderColor: '#1c76ce',
+                                borderWidth:1
+                            },
+                            emphasis: {
+                                areaColor: '#85A6E6' //鼠标放上去的颜色
+                            }
+                        },
+                    },
+                    series: [
+                        {
+                            name: '弱',
+                            type: 'scatterGL',
+                            coordinateSystem: 'geo',
+                            symbolSize: 5,
+                            itemStyle: {
+                                shadowBlur: 2,
+                                shadowColor: 'rgba(255, 255, 255, 0.8)',
+                                color: 'rgba(244,233,37,0.2)'
+                            },
+                            data: dataArray.weak
+                        },
+                        {
+                            name: '中',
+                            type: 'scatterGL',
+                            coordinateSystem: 'geo',
+                            symbolSize: 5,
+                            itemStyle: {
+                                shadowBlur: 2,
+                                shadowColor: 'rgba(255, 255, 255, 0.8)',
+                                color: 'rgba(244,233,37,0.5)'
+                            },
+                            data:dataArray.secondary
+                        },
+                        {
+                            name: '强',
+                            type: 'scatterGL',
+                            coordinateSystem: 'geo',
+                            symbolSize: 5,
+                            itemStyle: {
+                                shadowBlur: 2,
+                                shadowColor: 'rgba(255, 255, 255, 0.8)',
+                                color: 'rgb(244,233,37)'
+                            },
+                            data: dataArray.strong
+                        }
+                    ]
+                });
+        });
+
+    }
+
+    //堆叠图
+    var stacking1 = echarts.init(document.getElementById("stacking-1"));
+    var stacking2 = echarts.init(document.getElementById("stacking-2"));
+    var stacking3 = echarts.init(document.getElementById("stacking-3"));
+
+    function option2(v1, v2,name,time) {
+        var option2 = {
+            title: {
+                text: '订单实时统计',
+                left: 'center',
+                top: '2%',
+                textStyle: {
+                    color: '#ffffff',
+                    fontSize:fontSize
+
+                }
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
+                }
+            },
+            color: ['#257ddd','#00cfd4'],
+
+
+            legend: {
+//                x:'50%',
+                y:'13%',
+                right:'5%',
+//                data:name,
+                data:['昨天','今天'],
+                textStyle: {    //图例文字的样式
+                    color: '#ffffff',
+                    fontSize: fontLegend
+                }
+            },
+            grid: {
+                x:20,
+                y:60,
+                right:'5%',
+                bottom: '5%',
+                containLabel: true
+            },
+            xAxis: [
+                {
+                    show: true,
+                    type: 'category',
+                    boundaryGap: false,
+//                    data: time,
+                    data:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24] ,
+                    axisLine: {
+                        lineStyle: {
+                            color: '#ffffff',
+                            width: 1
+                        }
+                    },
+                    splitLine: {show: false}
+//                splitArea : {show : true}
+                }
+            ],
+            yAxis: [
+                {
+                    name:'订单数/单',
+                    show: true,
+                    type: 'value',
+                    axisLine: {
+                        lineStyle: {
+                            color: '#ffffff',
+                            width: 1
+                        }
+                    },
+                    splitLine: {show: false}
+
+                }
+
+
+            ],
+            series: [
+                {
+                    name: '昨天',
+                    symbol: 'none',  //这句就是去掉点的
+                    smooth: true,//平滑曲线
+                    type: 'line',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'top'
+                        }
+                    },
+                    areaStyle: {normal: {}},
+//                    data: v1
+                    data: [12,32,45,6,7,8,9,98,56,65,7,78,89,9,8,78,56,7,8,87,98,9,78,34]
+
+                },
+                {
+                    name: '今天',
+                    symbol: 'none',  //这句就是去掉点的
+                    smooth: true,
+                    type: 'line',
+                    stack: '总量',
+                    areaStyle: {normal: {}},
+//                    data: v2
+                    data: [7,78,89,9,8,78,56,7,8,87,98,9,78,34,12,32,45,6,7,8,9,98,56,65]
+                }
+
+
+            ]
+        };
+        stacking1.setOption(option2);
+
+    }
+    function option21(v1, v2,name,time) {
+        var option21 = {
+            title: {
+                text: '充电金额实时统计',
+                left: 'center',
+                top: '2%',
+                textStyle: {
+                    color: '#ffffff',
+                    fontSize:fontSize
+
+
+                }
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
+                }
+            },
+            color: ['#257ddd','#00cfd4'],
+
+            legend: {
+//                x:'right',
+                y:'13%',
+                right:'5%',
+//                data: name,
+                data:['昨天','今天'],
+                textStyle: {    //图例文字的样式
+                    color: '#ffffff',
+                    fontSize: fontLegend
+                }
+            },
+            grid: {
+                x:20,
+                y:60,
+                right:'5%',
+                bottom: '5%',
+                containLabel: true
+            },
+            xAxis: [
+                {
+                    show: true,
+                    type: 'category',
+                    boundaryGap: false,
+//                    data: time,
+                    data:['1点','2点','3点','4点','5点','6点','7点','8点','9点','10点','11点','12点','13点','14点','15点','16点','17点','18点','19点','20点','21点','22点','23点','24点'] ,
+
+                    axisLine: {
+                        lineStyle: {
+                            color: '#ffffff',
+                            width: 1
+                        }
+                    },
+                    splitLine: {show: false}
+                }
+            ],
+            yAxis: [
+                {
+//                    inverse: true,
+
+
+                    name:'金额/元',
+                    show: true,
+                    type: 'value',
+                    axisLine: {
+                        lineStyle: {
+                            color: '#ffffff',
+                            width: 1
+                        }
+                    },
+                    splitLine: {show: false}
+                }
+
+            ],
+            series: [
+                {
+                    name: '昨天',
+                    symbol: 'none',  //这句就是去掉点的
+                    smooth: true,//平滑曲线
+                    type: 'line',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'top'
+                        }
+                    },
+                    areaStyle: {normal: {}},
+//                    data: v1
+                    data: [12,32,45,6,7,8,9,98,56,65,7,78,89,9,8,78,56,7,8,87,98,9,78,34]
+
+
+                },
+                {
+                name: '今天',
+                    symbol: 'none',  //这句就是去掉点的
+                    smooth: true,
+                    type: 'line',
+                    stack: '总量',
+                    areaStyle: {normal: {}},
+//                    data: v2
+                    data: [7,78,89,9,8,78,56,7,8,87,98,9,78,34,12,32,45,6,7,8,9,98,56,65]
+
+                }
+
+
+            ]
+        };
+
+        stacking2.setOption(option21);
+
+    }
+    function option22(v1, v2,name,time) {
+        var option22 = {
+            title: {
+                text: '充电电量实时统计',
+                left: 'center',
+                top: '2%',
+                textStyle: {
+                    color: '#ffffff',
+                    fontSize:fontSize
+
+
+                }
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
+                }
+            },
+            color: ['#257ddd','#00cfd4'],
+
+            legend: {
+//                x:'50%',
+                right:'5%',
+
+                y:'13%',
+//                data: name,
+                data: ['昨天','今天'],
+                textStyle: {    //图例文字的样式
+                    color: '#ffffff',
+                    fontSize: fontLegend,
+                },
+
+            },
+            grid: {
+                x:20,
+                y:60,
+                right:'5%',
+
+                bottom: '5%',
+                containLabel: true
+            },
+            xAxis: [
+                {
+                    show: true,
+                    type: 'category',
+                    boundaryGap: false,
+//                    data: time,
+                    data:['1点','2点','3点','4点','5点','6点','7点','8点','9点','10点','11点','12点','13点','14点','15点','16点','17点','18点','19点','20点','21点','22点','23点','24点'] ,
+
+                    axisLine: {
+                        lineStyle: {
+                            color: '#ffffff',
+                            width: 1
+                        }
+                    },
+                    splitLine: {show: false}
+//                splitArea : {show : true}
+                }
+            ],
+            yAxis: [
+                {
+                    name:'电量/度',
+
+                    show: true,
+                    type: 'value',
+                    axisLine: {
+                        lineStyle: {
+                            color: '#ffffff',
+                            width: 1
+                        }
+                    },
+                    splitLine: {show: false}
+
+                }
+
+
+            ],
+            series: [
+                {
+                    name: '昨天',
+                    symbol: 'none',  //这句就是去掉点的
+                    smooth: true,//平滑曲线
+                    type: 'line',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'top'
+                        }
+                    },
+                    areaStyle: {normal: {}},
+                    data: [22,334,546,122,344,79,676,34,56,65,6,45,56,6,7,7,8,87,98,89,78,866,7,76]
+//                    data: v1
+
+                },
+                {
+                name: '今天',
+                    symbol: 'none',  //这句就是去掉点的
+                    smooth: true,
+                    type: 'line',
+                    stack: '总量',
+                    areaStyle: {normal: {}},
+                    data: [123,54,566,667,234,455,100,2,22,32,43,54,5,65,7,6,68,87,43,56,7,6,8,21]
+//                    data: v2
+                }
+
+
+            ]
+        };
+
+        stacking3.setOption(option22);
+    }
+
+    //折柱混合
+
+    var zhezhu = echarts.init(document.getElementById('zhezhu'));
+    function option3(data1, data2,name) {
+        var option3 = {
+            tooltip: {
+
+                trigger: 'axis',
+                axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                    type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+
+            },
+            legend: {
+                height:300,
+                left:'center',
+                top:'8%',
+                data: [
+                    {
+                        name:'充电金额',
+                        icon:'circle'
+                    },
+                    {
+                        name:'充电电量',
+                        icon:'circle'
+                    }
+                ],
+                textStyle: {    //图例文字的样式
+                    color: '#ffffff',
+                    fontSize: fontLegend
+                }
+            },
+            color: ['#00b4ff', '#00cfd4'],
+            title: {
+                text: '运营商充电实时统计',
+                left: 'center',
+                top: '1.5%',
+                textStyle: {
+                    color: '#ffffff',
+                    fontSize:fontSize
+
+
+                }
+            },
+
+            grid: {
+                x:10,
+                y:80,
+                x2:10,
+                y2:10,
+                containLabel: true
+            },
+            xAxis: [
+
+                {
+                    type : 'category',
+                    axisTick: {
+                        alignWithLabel: true
+                    },
+//                    data: name,
+                    data:['国电','特来电','星星','联合电动'],
+
+                    axisLine: {
+                        lineStyle: {
+                            color: '#ffffff',
+//                            width: 1
+                        }
+                    },
+                    splitLine: {show: false}
+
+                }
+
+            ],
+
+            yAxis: [
+                {
+                    type: 'value',
+                    name: '金额/元',
+                    min: 0,
+//                    interval: 200,
+                    axisLabel: {
+                        formatter: '{value}'
+                    },
+//                    splitNumber:500,
+                    axisLine: {
+                        lineStyle: {
+                            color: '#ffffff',
+                            width: 1
+                        }
+                    },
+                    splitLine: {show: false}
+
+                },
+                {
+                    type: 'value',
+                    name: '电量/度',
+                    min: 0,
+                    max:1000,
+                    interval: 100,
+                    axisLabel: {
+                        formatter: '{value}'
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#ffffff',
+                            width: 1
+                        }
+                    },
+                    splitLine: {show: false}
+
+                }
+
+            ],
+            series: [
+                {
+                    name: '充电金额',
+                    type: 'bar',
+//                    data: data1,
+                    data: [10560,3344,4545,567]
+                },
+                {
+                    name: '充电电量',
+                    type: 'bar',
+//                    data: data2,
+                    data: [1233,564,85,900]
+
+                }
+
+            ]
+        };
+
+        zhezhu.setOption(option3);
+
+    }
+
+    function option52(data,name){
+         var option52 = {
+                color: ['#3398DB'],
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    }
+                },
+                 title: {
+                     text: '每月充值统计',
+                     left: 'center',
+                     top: '6%',
+                     textStyle: {
+                         color: '#ffffff',
+                         fontSize:fontSize
+
+
+                     }
+                 },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        data : name,
+                        axisTick: {
+                            alignWithLabel: true
+                        },
+                        axisLine: {
+                            lineStyle: {
+                                color: '#ffffff',
+                                width: 1
+                            }
+                        },
+                        splitLine: {show: false}
+
+                    }
+                ],
+                yAxis : [
+                    {
+                        name:'金额/元',
+                        type : 'value',
+                        axisLine: {
+                            lineStyle: {
+                                color: '#ffffff',
+                                width: 1
+                            }
+                        },
+                        splitLine: {show: false}
+
+                    }
+                ],
+                series : [
+                    {
+                        name:'充值金额',
+                        type:'bar',
+                        barWidth: '60%',
+                        data:data
+                    }
+                ]
+         };
+        zhe2.setOption(option52);
+
+
+    }
+
+
+    //4列第二个柱形图
+    var zhu2 = echarts.init(document.getElementById('zhu-2'));
+
+    function option4(d1,d2,d3,d4,name,time,color,name2) {
+        var option4 = {
+//            color: ['#0d9bed', '#1ad5f8', '#06cbc5', '#285ce0'],
+            color: color,
+
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            title: {
+                text: '运营商累计充电金额',
+                left: 'center',
+                top: '0%',
+                textStyle: {
+                    color: '#ffffff',
+                    fontSize:fontSize
+
+
+                }
+            },
+            legend: {
+
+                top:'7%',
+                left:'center',
+                data:name,
+
+                textStyle: {    //图例文字的样式
+                    color: '#ffffff',
+                    fontSize: fontLegend
+                }
+            },
+            grid: {
+                x:20,
+                y:80,
+                x2:20,
+                y2:10,
+                containLabel: true
+            },
+
+            calculable: true,
+            xAxis: [
+                {
+                    type: 'category',
+//                    show:true,
+                    axisTick: {
+                        alignWithLabel: true
+                    },
+                    axisLabel: {
+                        formatter: '{value}'
+                    },
+                    data: time,
+                    axisLine: {
+                        lineStyle: {
+                            color: '#ffffff',
+                            width: 1
+                        }
+                    },
+                    splitLine: {show: false}
+
+                }
+            ],
+
+            yAxis: [
+                {
+                    name:'金额/元',
+                    show:true,
+                    type: 'value',
+//                    axisTick: {show: false},
+                    axisLabel: {
+                        formatter: '{value}'
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#ffffff',
+                            width: 1
+                        }
+                    },
+                    splitLine: {show: false}
+
+                }
+            ],
+            series: [
+                {
+                    name: name2[0],
+                    type: 'bar',
+//                    barGap: 0,
+                    data: d1
+                },
+                {
+                    name:  name2[1],
+                    type: 'bar',
+                    data: d2
+                },
+                {
+                    name:  name2[2],
+                    type: 'bar',
+                    data: d3
+                },
+
+                {
+                    name:  name2[3],
+                    type: 'bar',
+                    data: d4
+                }
+
+            ]
+        };
+        zhu2.setOption(option4);
+    }
+
+    //折线图
+
+    var zhe1 = echarts.init(document.getElementById('zhe1'));
+    var zhe2 = echarts.init(document.getElementById('zhe2'));
+    var zhe3 = echarts.init(document.getElementById('zhe3'));
+    function option5(values,name) {
+        var option5 = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            color: ['#ecfa1a'],
+            legend: {
+//            data:['交易金额'],
+                textStyle: {    //图例文字的样式
+                    color: '#ffffff',
+                    fontSize: fontLegend
+                }
+            },
+            grid: {
+//                top: '11%',
+                left: '3%',
+//                right: '4%',
+                bottom: '10%',
+                containLabel: true
+            },
+            title: {
+                text: '每月充电金额统计',
+                left: 'center',
+                top: '2%',
+                textStyle: {
+                    color: '#ffffff',
+                    fontSize:fontSize
+
+
+                }
+            },
+            xAxis: {
+                show: true,
+                type: 'category',
+                boundaryGap: false,
+                data: name,
+                axisLine: {
+                    lineStyle: {
+                        color: '#ffffff',
+                        width: 1
+                    }
+                },
+                splitLine: {show: false}
+
+            },
+            yAxis: {
+                name:'金额/元',
+                show: true,
+                type: 'value',
+                axisLabel: {
+                    formatter: '{value}'
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#ffffff',
+                        width: 1
+                    }
+                },
+                splitLine: {show: false}
+
+            },
+            series: [
+                {
+                    name: '充电金额',
+                    type: 'line',
+                    data: values
+//                    label: {
+//                        normal: {
+//                            show: true,
+//                            position: 'top'
+//                        }
+//                    }
+
+                }
+            ]
+        };
+        zhe1.setOption(option5);
+
+    }
+    function option6(v1,v2,name) {
+        var option6 = {
+
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            color: ['#257ddd', '#00cfd4'],
+
+            title: {
+                text: '地区充电情况实时统计top6',
+                left: 'center',
+                top: '0%',
+                textStyle: {
+                    color: '#ffffff',
+                    fontSize:fontSize
+
+
+                }
+            },
+            legend: {
+                top:'9%',
+                left:'center',
+                data:[
+                    {
+                        name:'充电金额',
+                        icon:'circle'
+                    },
+                    {
+                        name:'充电电量',
+                        icon:'circle'
+                    }
+
+                ],
+
+                textStyle: {    //图例文字的样式
+                    color: '#ffffff',
+                    fontSize: fontLegend
+                }
+            },
+            grid: {
+                x:10,
+                y:40,
+                x2:10,
+                y2:10,
+                containLabel: true
+            },
+            xAxis: {
+                type: 'value',
+                boundaryGap: [0, 0.01],
+                axisLine: {
+                    lineStyle: {
+                        color: '#ffffff',
+                        width: 1
+                    }
+                },
+                splitLine: {show: false},
+                axisLabel:{
+                    rotate:30,
+                    //X轴刻度配置
+                    interval:'auto' //0：表示全部显示不间隔；auto:表示自动根据刻度个数和宽度自动设置间隔个数
+                }
+
+            },
+            yAxis: {
+                inverse: true,
+                type: 'category',
+                data: name,
+                axisLine: {
+                    lineStyle: {
+                        color: '#ffffff',
+                        width: 1
+                    }
+                },
+                splitLine: {show: false}
+
+
+            },
+            series: [
+                {
+                    name: '充电金额',
+                    type: 'bar',
+                    data: v1
+                },
+                {
+                    name: '充电电量',
+                    type: 'bar',
+                    data: v2
+                }
+
+            ]
+        };
+        zhe3.setOption(option6)
+
+    }
+
+
+    option1();option11();option12();
+    map();
+    option2();option22();option21();
+    option3();option52();
+    option4();
+    option5();option6();
+
+
+</script>
+
+<script>
+
+
+//    var playarr = [];
+//    var playnum = 0;
+//    var myVideo = document.getElementById("media");
+//    var falg = true;
+//    myVideo.onplaying = function(){
+//        falg = false;
+//    }
+//
+//    //当客户端不能连接上服务端时
+//    var errorcallback = function (error) {
+//        console.log('连接失败');
+//    };
+//    var sock = new SockJS("/ShowHome/endpointChat");
+//    var stomp = Stomp.over(sock);
+//
+//    stomp.connect({}, function (frame) {
+//        stomp.subscribe("/queue/notifications", handleNotification);
+//        stomp.send("/load", {}, "");
+//    }, errorcallback);
+//
+//    function handleNotification(message) {
+////        map();
+//
+//        var color11=[],color42=[];
+//        var names11=[],names12=[],names13=[],names31=[],time31=[],names32=[],time32=[],names33=[],time33=[],names41=[],names42=[],names422=[],time42=[],names51=[],names52=[],names53=[];
+//        var values1 = [], values2 = [], values3 = [], valuesy1 = [], valuest1 = [], valuesy2 = [], valuest2 = [], valuesy3 = [], valuest3 = [],
+//                values41 = [], values42 = [],v11=[],v12=[],v13=[],v14=[],values51=[],values52=[],values531=[],values532=[],mapstrong=[],mapmiddle=[],mapweak=[];
+//        var data = message.body;
+//        var obj = eval("(" + data + ")");
+//
+//        $.each(obj, function (index, item) {
+//            var total= 0,j;
+//
+//            if(index=='top'){
+////                console.log(item.payNum)
+//                var options = {
+//                    useEasing: true,
+//                    useGrouping: true,
+//                    separator: ',',
+//                    decimal: '.',
+//                };
+//                var payNum = new CountUp('payNum', 0, 10000, 0, 2, options);
+//                var money = new CountUp('money', 0, 100000, 2, 2, options);
+//                var power = new CountUp('power', 0, 200000, 2, 2, options);
+//                var pileNum = new CountUp('pileNum',0,80000, 0, 2, options);
+//
+//                payNum.start();
+//                money.start();
+//                power.start();
+//                pileNum.start();
+//
+//                payNum.update(item.payNum);
+//                money.update(item.money);
+//                power.update(item.power);
+//                pileNum.update(item.pileNum);
+//
+//
+////                $('.pileNum').text(item.payNum);
+////                $('.money').text(item.money);
+////                $('.power').text(item.power);
+////                $('.payNum').text(item.pileNum)
+//
+//            }
+//
+//            if (index == "one_one") {
+////                    console.log(1);
+//                for (var i in item) {
+//                    switch(i){
+//                        case '国家电网':
+//                            j='#0d9bed';
+//                            break;
+//                        case '特来电':
+//                            j='#1ad5f8';
+//                            break;
+//                        case '星星':
+//                            j='#06cbc5';
+//                            break;
+//                        case '联合电动':
+//                            j='#285ce0';
+//                            break;
+//                        case '其他':
+//                            j='#3a5173';
+//                            break;
+//
+//                    }
+//
+////                        names1.push(i);    //挨个取出类别并填入类别数组
+//                    values1.push({
+//                        value: item[i],
+//                        name: i
+//                    });
+//                    color11.push(j);
+////                    names11.push(i)
+//                    names11.push({
+//                        name:i,
+//                        icon:'circle'
+//                    })
+//                }
+//                option1(values1,color11,names11);
+//                return;
+//            }
+//
+//            if (index == "one_two") {
+//
+//                for (var i in item) {
+//
+//                    switch(i){
+//                        case 'leisure':
+//                            j='空闲';
+//                            break;
+//                        case 'use':
+//                            j='使用中';
+//                            break;
+//                        case 'fault':
+//                            j='故障';
+//                            break;
+//
+//                    }
+//
+//                    names12.push({
+//                        name:j,
+//                        icon:'circle'
+//                    })   //挨个取出类别并填入类别数组
+//                    values2.push({
+//                        value: item[i],
+//                        name: j
+//                    });
+//
+//                    total += parseInt(item[i]);
+//
+//
+//                }
+//
+//                option11(values2,names12,total);
+//                return;
+//            }
+//
+//            if (index == "one_three") {
+//
+//                var total=0;
+//
+//                for (var i in item) {
+//                    switch(i){
+//                        case 'leisure':
+//                            j='空闲';
+//                            break;
+//                        case 'use':
+//                            j='使用中';
+//                            break;
+//                        case 'fault':
+//                            j='故障';
+//                            break;
+//
+//                    }
+//                    names13.push({
+//                        name:j,
+//                        icon:'circle'
+//                    })    //挨个取出类别并填入类别数组
+//                    values3.push({
+//                        value: item[i],
+//                        name: j
+//                    });
+//                    total += parseInt(item[i]);
+//
+//                }
+//                option12(values3,names13,total);
+//                return;
+//            }
+//
+//            if (index == "three_one") {
+//                var k;
+//                $.each(item,function(index2,item2){
+//
+//                    if (index2 == 'Yesterday') {
+//                        k = '昨天';
+//                        $.each(item2, function (a, b) {
+//
+//                            time31.push(parseInt(a)+'点');
+//                            valuesy1.push(b);
+//                        });
+//                    }
+//                    if (index2 == 'Today') {
+//                        k = '今天';
+//                        $.each(item2, function (a, b) {
+////                            time31.push(parseInt(a));
+//                            valuest1.push(b);
+//
+//                        });
+//                    }
+////                    console.log(time31);
+//                    names31.push(k);
+//
+//                });
+//
+//                option2(valuesy1, valuest1,names31,time31);
+//
+//                return;
+//            }
+//
+//            if (index == "three_two") {
+//                $.each(item,function(index2,item2){
+//
+//                    if (index2 == 'Yesterday') {
+//                        k = '昨天';
+//                        $.each(item2, function (a, b) {
+//
+//                            time32.push(parseInt(a)+'点');
+//                            valuesy2.push(b);
+//
+//                        });
+//                    }
+//                    if (index2 == 'Today') {
+//                        k = '今天';
+//                        $.each(item2, function (a, b) {
+//                            valuest2.push(b);
+//
+//                        });
+//                    }
+//
+//                    names32.push(k);
+//
+//                });
+//                option21(valuesy2, valuest2,names32,time32);
+//                console.log(time32);
+//
+//                return;
+//            }
+//
+//            if (index == "three_three") {
+//                $.each(item,function(index2,item2){
+//
+//                    if (index2 == 'Yesterday') {
+//                        k = '昨天';
+//                        $.each(item2, function (a, b) {
+//
+//                            time33.push(parseInt(a)+'点');
+//                            valuesy3.push(b);
+//                        });
+//                    }
+//                    if (index2 == 'Today') {
+//                        k = '今天';
+//                        $.each(item2, function (a, b) {
+////                            time31.push(parseInt(a));
+//                            valuest3.push(b);
+//
+//                        });
+//                    }
+//
+//                    names33.push(k);
+//
+//                });
+//                option22(valuesy3, valuest3,names33,time33);
+//                return;
+//            }
+//
+//            if (index == "four_One") {
+//
+//                    $.each(item,function(index2,item2){
+//
+//
+//                        names41.push(index2);
+//
+//                        $.each(item2,function(index3,item3){
+//                            if (index3 == 'pay_money') {
+//                                values41.push(item3);
+//
+//                            }
+//                            if (index3 == 'total_power') {
+//
+//                                values42.push( item3)
+//
+//                            }
+//
+//                        });
+//
+//                    });
+//
+//
+//                    option3(values41, values42,names41);
+//
+//                return
+//
+//            }
+//            if (index == "four_two") {
+//                var j4;
+//                $.each(item,function(index2,item2){
+//                    if(parseInt(index2)<10){
+//                        j4= index2.substring(1)+"月";
+//                    }
+//                    else{
+//                        j4=index2+'月'
+//                    }
+//                    time42.push(j4);
+//
+//                    $.each(item2,function(index3,item3){
+////                        var newitem3=(parseFloat(item3)/1000).toFixed(2);
+//                        switch(index3){
+//                            case '特来电':
+//                                v11.push(item3);
+//                                color42.push('#1ad5f8');
+//                                break;
+//                            case '星星':
+//                                v12.push(item3);
+//                                color42.push('#06cbc5');
+//
+//                                break;
+//                            case '联合电动':
+//                                v13.push(item3);
+//                                color42.push('#285ce0');
+//
+//                                break;
+//                            case '国电':
+//                                v14.push(item3);
+//                                color42.push('#0d9bed');
+//
+//                                break;
+//                        }
+//
+//                        names42.push({
+//                            name:index3,
+//                            icon:'circle'
+//                        });
+//
+//                        names422.push(index3);
+//
+//                    });
+//
+//                });
+//
+//                option4(v11,v12,v13,v14,names42,time42,color42,names422);
+//
+//                return
+//
+//            }
+//            if (index == "five_one") {
+//                var j5;
+//                $.each(item,function(index1,item2){
+////                    var newitem2=(parseFloat(item2)/1000).toFixed(2);
+//
+//                    if(parseInt(index1)<10){
+//                        j5= index1.substring(1)+"月";
+//                    }
+//                    else{
+//                        j5=index1+'月'
+//                    }
+//
+//                    names51.push(j5);
+//
+//                    values51.push({
+//                        value: item2,
+//                        name: j5
+//                    });
+//
+//                });
+//                option5(values51,names51);
+//                return;
+//            }
+//            if (index == "five_two") {
+//
+//                $.each(item,function(index1,item2){
+////                    var newitem2=(parseFloat(item2)/1000).toFixed(2);
+//
+//                    if(parseInt(index1)<10){
+//                        j5= index1.substring(1)+"月";
+//                    }
+//                    else{
+//                        j5=index1+'月'
+//                    }
+//
+//                    names52.push(j5);
+//
+//                    values52.push({
+//                        value: item2,
+//                        name: j5
+//                    });
+//
+//                })
+//
+//                option52(values52,names52);
+//
+//                return;
+//            }
+//            if (index == "five_three") {
+//                    $.each(item,function(index2,item2){
+////                        console.log(index2);
+//                        names53.push(index2);
+//                        $.each(item2,function(index3,item3){
+//                            if (index3 == 'money') {
+//
+//                                values531.push(item3);
+//
+//                            }
+//                            if (index3 == 'power') {
+//
+//                                values532.push( item3)
+//
+//                            }
+//
+//                        });
+//
+//
+//                    });
+//                option6(values531, values532,names53);
+//
+//
+//                return
+//
+//            }
+//
+//            if(index=='play'){
+////                console.log(item);
+//                var Alltr='<tr>'+
+//                        '<td>'+ item.time+'</td>'+
+//                        '<td>'+ item.userId+'</td>'+
+//                        '<td>'+ item.type+'</td>'+
+//                        '<td>'+ item.action+'</td>'+
+//                        '</tr>';
+//
+//                $('.tlist').prepend($(Alltr));
+//                if($('.tlist tr').length>7){
+//
+////                    $('.tlist tr td:first').text('haha');
+//                    $('.tlist').animate({'margin-top':'36px'},500,function(){
+//                        $('.tlist').css({'margin-top':'0px'});
+//                    });
+//                }
+//
+//                //语音播放
+//
+//                if( falg ){
+//                    myVideo.src = "http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=5&text="+item.talk;
+//                    myVideo.play();
+//                    myVideo.onended = function(){
+//                        falg = true;
+//                    }
+//                    playnum += 1;
+//                } else {
+//                    myVideo.onended = function(){
+//                        if( playnum < playarr.length ){
+//                            myVideo.src = "http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=5&text="+playarr[playnum];
+//                            myVideo.play();
+//                            playnum += 1;
+//                        }
+//                        falg = true;
+//                    }
+//                }
+//
+//            }
+//            if(index=="map") {
+//
+//                map(item);
+//
+//            }
+//        });
+//
+//    }
+
+//    var timer=setInterval(function(){
+//        var Alltr='<tr>'+
+//                '<td>2017-09-03 19:42:12</td>'+
+//                '<td>'+ 24197+'</td>'+
+//                '<td>国家电网</td>'+
+//                '<td>开始充电</td>'+
+//                '</tr>';
+//
+//        $('.tlist').prepend($(Alltr));
+//        if($('.tlist tr').length>7){
+////
+//////                    $('.tlist tr td:first').text('haha');
+////            $('.tlist').animate({'margin-top':'36px'},500,function(){
+////                $('.tlist').css({'margin-top':'0px'});
+////            });
+//            clearInterval(timer)
+//        }
+//    },2000)
+
+
+</script>
+</body>
+</html>

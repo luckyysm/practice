@@ -1,0 +1,50 @@
+<!DOCTYPE html> 
+<html>
+    <head> 
+        <meta charset="UTF-8">
+        <title>封装的气泡</title> 
+        <style type="text/css"> 
+            div{ margin: 0 auto; margin-top: 300px; height: 200px; background: deepskyblue; width: 200px; } 
+            /*必须写 给气泡绝对定位才能动起来*/ 
+            .bubble{ position: absolute; } 
+        </style> 
+    </head> 
+    <body> <!--网上引入的 JQ 所以请保证有网络--> 
+        <div></div>
+    </body>
+        <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script> <!--<script src="jquery-2.2.4.min.js" type="text/javascript" charset="utf-8"></script>--> 
+        <script type="text/javascript"> 
+            //--封装气泡函数------- //随机函数 
+            function randomNumber (m,n) { return Math.floor(Math.random()*(n-m+1)+m); } 
+            //随机颜色 
+            function randomColor () { var r=randomNumber(0,255); var g=randomNumber(0,255); var b=randomNumber(0,255); var strColor='rgb('+r+','+g+','+b+')'; return strColor; }
+            //创造气泡 封装函数 
+            //参数 n1: x 轴随机数开始 n2: x 轴随机数结束 n3:名字 n4, n5:随机气泡宽高 n6:起始高度
+            //最终只有三个参数 完美封装 
+            function creatBall (n1,n2,n3,n4,n5,n6) { 
+                var num2=randomNumber(n1,n2);
+                // 距离左边的距离 
+                var num3=randomNumber(n4,n5);
+                //高度 
+                var ball=$("<div class='bubble'></div>");
+                ball.attr({ position: "absolute", });
+                ball.css({ backgroundColor: randomColor(), left:num2, width:num3, height:num3, top:n6, });
+                ball.animate({ borderRadius:'50%', },200);
+                ball.animate({ top:n6-200,  left: num2 -102, opacity: 0 },3000);
+                $("body").append(ball);
+             } 
+            var cball;
+            function ballfz (n3,n4,n5) { $(n3).mouseenter(function () { 
+                    var n6=$(this).offset().top-$(this).outerHeight(true)+$(this).height();
+                    //参数6在这里提供所以只需要在这里传参数 
+                    var n1=$(this).offset().left; 
+                    var n2=$(this).offset().left+$(this).outerWidth()-(n4+n5)/2;
+                    cball = setInterval(function () { creatBall(n1,n2,n3,n4,n5,n6); },100);
+                }) 
+                $(n3).mouseleave(function () { clearInterval(cball); }) 
+            } 
+                //调用函数 需要传入 三个值 1.气泡效果的目标 2. 产生的气泡的宽度的最小值 3.产生的气泡的宽度的最大值 
+            ballfz("div",10,50); 
+        </script> 
+    <!-- </body> -->
+</html>

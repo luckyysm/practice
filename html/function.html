@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数</title>
+    <script src="../js/jquery.min.js"></script>
+</head>
+<body>
+<script>
+//    function a(){
+////        return "a";
+//        var ha;
+//
+////        function aa(){
+////            ha="aa";
+////
+////        }
+//
+////        $.get("../function.json",function(data){
+//////            console.log(data);
+//////            var obj=eval("("+data+")");
+//////            console.log(data.a)
+////            ha=data.b;
+////            console.log(ha)
+////        })
+//        $.ajax({
+//            url:'../function.json',
+//            type:"GET",
+//            dataType:'json',
+//            async:false,
+//            success:function(data){
+////                console.log(data.a)
+//                ha=data.b;
+//            }
+//
+//        })
+//        return ha;
+//
+//    }
+//    var result=a();
+//    console.log(result)
+
+
+var add = function(x){
+    var sum = 1;
+    var tmp = function(x){
+        sum = sum + x;
+        return tmp;
+    }
+    tmp.toString = function(){
+        return sum;
+    }
+    return tmp;
+}
+    alert(add(1))
+//console.log(add(1));
+    alert(add(12)(2))
+//console.log(add(1)(2));
+console.log(add(1)(2)(3));
+    alert(add(1)(5)(3))
+</script>
+</body>
+</html>

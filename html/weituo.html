@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/touch.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div.box{
+            width:100px;
+            height:200px;
+            margin-right: 20px;
+            background-color: #0df1fe;
+            border: 1px solid #123232;
+            font-size: 32px;
+            /*display: inline-block;*/
+        }
+        /*.position{*/
+            /*position: absolute;*/
+            /*top:230px;*/
+        /*}*/
+
+    </style>
+</head>
+
+<body>
+<div class="wrap">
+
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box position">4</div>
+    <div class="box">5</div>
+    <div class="box six">6</div>
+</div>
+</body>
+<script>
+    $(function(){
+//        var scrollTop,offsetTop,viewTop;
+//        $("body").on("click",".box",function(){
+//            console.log($(this).text());
+//        });
+//
+//        offsetTop = $(".six").offset().top;
+//        console.log("offset高"+offsetTop);
+
+//    console.log($(".position").css("width"));
+//    $(".wrap").click(function(event){
+//        console.log(event.target);
+//        console.log(this);
+//        console.log(event.currentTarget);
+//    })
+
+//        $(document).scroll(function(){
+//            scrollTop = $(document).scrollTop();
+//            console.log("滚动高"+scrollTop);
+//
+////            console.log($(".position").css("top"));
+//            $(".position").animate({top:"200px"},2000,function(){
+////                console.log($(".position").css("top"));
+//
+//            });
+//            //距离视口的高
+//            viewTop = offsetTop - scrollTop;
+//            console.log("距离视口高"+viewTop);
+//
+//        });
+
+        //滑动到底部
+        touch.on("body",'swipeup',function(){
+            console.log("上滑");
+
+            if($(document).scrollTop() + $(window).height() >= $(document).height() ){
+                console.log("到达底部");
+            }
+        })
+
+    });
+//    var x = 0;
+//
+//    function add(){
+//        var y = 100;
+//        x = y + 500;
+//        return y + 100;
+//    }
+//    add();
+
+
+
+
+</script>
+</html>

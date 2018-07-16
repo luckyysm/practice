@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>highlight</title>
+    <script src="http://demo.js.jdk5.com/jquery-1.12.3.min.js"></script>
+    <style type="text/css">
+        body {
+            margin: 50px;
+            font: 15px Arial;
+            line-height: 1.5;
+        }
+        input, button { padding: .3em; }
+        .highlight {
+            /*background: yellow;*/
+            color: red;
+        }
+    </style>
+    <script type="text/javascript">
+        function highlight(text, words, tag) {
+            // 默认的标签，如果没有指定，使用span
+            tag = tag || 'span';
+            var i, len = words.length, re;
+            for (i = 0; i < len; i++) {
+                // 正则匹配输入的文本
+                re = new RegExp(words[i], 'g');
+                console.log(re);
+                if (re.test(text)) {
+                    text = text.replace(re, '<span class="highlight">$&</span>');
+                }
+                console.log($("span"));
+            }
+            return text;
+        }
+
+        function unhighlight(text, tag) {
+            // 默认的标签，如果没有指定，使用span
+            tag = tag || 'span';
+            var re = new RegExp('(<'+ tag +'.+?>|<\/'+ tag +'>)', 'g');
+            return text.replace(re, '');
+        }
+
+        $(function (){
+            var $p = $('p');
+            $('#highlight').click(function(){
+                var words = $('input').val().replace(/(\s,|,\s)/g, ',').split(',');
+                console.log(words);
+                $p.html( unhighlight($p.html()) );
+                $p.html( highlight($p.html(), words) );
+            });
+
+            $('#unhighlight').click(function(){
+                $p.html( unhighlight($p.html()) );
+            });
+        });
+
+        /*
+         $('p').html( highlight(
+         $('p').html(), //替换的文本
+         ['foo', 'bar', 'baz', 'hello world'], //高亮的文本数组
+         'strong' //自定义标签
+         ));
+         */
+    </script>
+</head>
+<body>
+<input type="text" value="啊"/>
+<button id="highlight">高亮</button>
+<button id="unhighlight">取消高亮</button>
+<p>今天啊，挺起人啊是单纯完成阿达伟大上都能成为女王机场往返恶恶。违反你叫我凤凰网威风威风发 额外分骨肉他依然拥有</p>
+</body>
+</html>

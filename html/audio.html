@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0,user-scalable=0">
+        <meta name="format-detection" content="telephone=no">
+        <title>大傻子来了</title>
+        <script src="adaptation.js"></script>
+        <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        html,body{
+            width:100%;
+        }
+        .wrap,.img,img{
+            width: 100%;
+
+        }
+        img{
+            vertical-align: middle;
+            position: relative;
+            height: 5.3rem;
+            
+        }
+        .mask{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5.3rem;
+            background-color: rgba(0,0,0,0.3);
+        }
+        .play{
+            position: absolute;
+            top: 2rem;
+            z-index: 100;
+            left: 42%;
+        }
+        .play img{
+            width: 1rem;
+            height: auto;
+
+        }
+        p{
+            font-size: .46rem;
+            color: #fb236c;
+            position: absolute;
+            top: 0.4rem;
+            /* text-align: center; */
+            left: 36%;
+            background: linear-gradient(to right, #ef16a2, #3e0348);
+            -webkit-background-clip: text;
+            color: transparent;
+            font-weight: bold;
+        }
+        .audio{
+            display: inline-block;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            height: 6.8rem;
+        }
+        .bottom{
+            width: 100%;
+            height: 2rem;
+            background-color: #fff;
+            position: absolute;
+        }
+        </style>
+        <!-- <script type="text/javascript" src="js/ControlBar.js"></script> -->
+    </head>
+
+    <body>
+
+        <div class="wrap">
+            <div class="img">
+                <img src="images/zhao.jpg" alt="">
+                <!-- <div class="mask">
+                    
+                </div> -->
+                <!-- <div class="play">
+                    <img src="../images/play.png" alt="">
+                </div> -->
+                <p class="click">你点一个试试</p>
+            </div>
+            <audio src="images/sha.mp3" controls="controls" loop="loop" preload="auto" class="audio" id="audio">
+                你的浏览器不支持audioo元素
+            </audio>
+            <div class="bottom"></div>
+        </div>
+        <!-- <video id="myPlayer" width="600" height="400" src="htmls/2_1.mp4" controls="controls" loop="loop" poster="3.jpg"> -->
+            <!-- 你的浏览器不支持audio元素 -->
+            <!-- MP4有3种编码，mpg4(xdiv),,mpg4(xvid)，avc(h264)，
+                    只有h264才是公认的MP4标准编码 -->
+        <!-- </video> -->
+        <!-- <div id="progress"></div> -->
+        <!-- 音量控制 -->
+        <!-- <input id="volume" type="range" min="0" max="1" step="0.1" onchange="Volume(this)"> -->
+        <!-- 速率和时间进度的信息 -->
+        <!-- <span id="rate">1</span>fps
+        <span id="info"></span> -->
+        <!-- <button onclick="Play(this)" id="btn1">播放</button>
+        <button onclick="Fast()">快进</button>
+        <button onclick="Slow()">慢进</button>
+        <button onclick="Prev()">后退</button>
+        <button onclick="Next()">前进</button>
+        <button onclick="Muted(this)">静音</button> -->
+    </body>
+    <script>
+        document.getElementById("audio").onclick=function(){
+            console.log(this);
+            if(this.paused){
+                this.play();
+            }else{
+                this.pause();
+            }
+        }
+    </script>
+    <!-- <script>
+        //使用脚本检测浏览器的标签支持情况
+            var support = !!document.createElement("audio").canPlayType;
+            if (!support) {
+                alert("你的浏览器不支持本视频播放");
+            }
+            // 定义全局的视频对象
+            var e1 = null;
+            window.addEventListener("load", function () {
+                e1 = document.getElementById("myPlayer");
+            });
+            /*前进：一分钟 */
+            function Next() {
+                e1.currentTime += 10; //设置属性currentTime,快进10s
+            }
+            /*后退：一分钟 */
+            function Prev() {
+                e1.currentTime -= 10; //设置属性currentTime,后退10s
+            }
+            /*播放/暂停*/
+            function Play(e) {
+                console.log(e);
+                if (e.paused) {
+                    e.play();
+                    document.getElementById("btn1").innerHTML = "暂停"
+                } else {
+                    e1.pause();
+                    document.getElementById("btn1").innerHTML = "播放"
+                }
+            }
+            /*慢进：小于等于1时，每次都只减慢0.2的速率；大于1时，每次减1 */
+            function Slow() {
+                if (e1.playbackRate <= 1) {
+                    e1.playbackRate -= 0.2;
+                } else {
+                    e1.playbackRate -= 1;
+                }
+                document.getElementById("rate").innerHTML = fps2fps(e1.playbackRate);
+            }
+            /*慢进：小于等于1时，每次都只减慢0.2的速率；大于1时，每次减1 */
+            function Fast() {
+                if (e1.playbackRate < 1) {
+                    e1.playbackRate += 0.2;
+                } else {
+                    e1.playbackRate += 1;
+                }
+                document.getElementById("rate").innerHTML = fps2fps(e1.playbackRate);
+            }
+            function fps2fps(fps) {
+                if (fps < 1) {
+                    return fps.toFixed(1);
+                } else {
+                    return fps;
+                }
+            }
+            /*静音*/
+            function Muted(e) {
+                if (e1.muted) {
+                    e1.muted = false;
+                    e.innerHRML = "X";
+                    document.getElementById("volume").value = e1.volume;
+                } else {
+                    e1.muted = true;
+                    e.innerHRML = "x";
+                    document.getElementById("volume").value = 0;
+                }
+            }
+            /*调整音量*/
+            function Volume(e) {
+                if (e1.muted == true) {
+                    e1.muted = false;
+                }
+                e1.volume = e.value;
+            }
+            /* 进度信息：控制进度条，并显示进度时间*/
+            function Progress() {
+                var p1 = document.getElementById("progress");
+                p1.style.width = (e1.currentTime / e1.duration) * 720 + "px";
+                document.getElementById("info").innerHTML = s2time(e1.currentTime) + "/" + s2time(e1.duration);
+            }
+            function s2time(s) {
+                var m = parseFloat(s / 60).toFixed(0);
+                s = parseFloat(s % 60).toFixed(0);
+                return (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
+            }
+            /* 网页加载完毕后，把进度处理函数添加至视频对象的timeupdate事件中*/
+            window.addEventListener("load", function () {
+                e1.addEventListener("timeupdate", Progress);
+            });
+            /*给window.onload事件添加进度处理函数*/
+            window.addEventListener("load", Progress);
+
+        
+
+    </script> -->
+
+</html>

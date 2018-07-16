@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/jquery.min.js"></script>
+	<style>
+	body{
+		background:#6666ff;
+	}
+	#one{
+		height: 500px;
+		width: 800px;
+		margin: 120px auto 0px;
+		/*background: pink;*/
+	}
+	p{
+		border-radius: 3px;
+		text-align: center;
+		font-size: 32px;
+		/*background: white;*/
+		margin: 0px 0px;
+	}
+	input{
+		width: 400px;
+		height: 40px;
+		margin:15px 200px 0px;
+		padding-left: 15px;
+		font-size: 18px;
+		border-radius: 5px;
+	}
+	ul{
+		padding-left: 0px;
+		width: 419px;
+		margin-top:3px;
+        margin-left: 200px;
+        font-size: 20px;
+		list-style-type: none;
+        border: 1px solid #3333cc;
+	}
+	ul li{
+		padding-left: 10px;
+		margin-left: 0px;
+         line-height: 28px;
+	    background: #ffffcc;
+	   
+	}
+	</style>
+</head>
+<body>
+	<div id="one">
+     
+     	<p>千与千寻</p>
+     	<input type="text" name='word' placeholder='seacher' >
+         <ul>
+         				
+		</ul>			
+	</div>
+</body>
+<script>
+	$("input").keyup(function(){
+		var url='http://sug.so.360.cn/suggest?callback=suggest_so&encodein=utf-8&encodeout=utf-8&format=json&fields=word,obdata&word='+this.value;
+	    var sc = document.createElement('script');
+        sc.src = url;
+        $("head").append(sc);
+	});
+</script>
+<script>
+
+	function suggest_so(data) {
+	   // console.log(data);
+		for(var i=0,html=''; i<data.result.length; i+=1) {
+			html = html + '<li>'+ '<a>'+data.result[i].word+'</a>'+'</li>';
+		}
+		$("ul").html(html);
+	}
+	$("ul").on("click","li", function(){
+		var value = $(this).text();
+//		$("input").val(value);
+//		var address = "https://smart.sug.so.com/translate-query?callback=trans&query="+ value;
+//		var sc = document.createElement('script');
+//		sc.src = address;
+//		$("head").append(sc);
+//		console.log(value);
+		window.location.href = "https://www.so.com/s?ie=utf-8&fr=so.com&src=home_suggst_b&q="+value;
+
+
+	});
+	function trans(data){
+		console.log(data);
+//		window.location.href = "https://www.so.com/s?ie=utf-8&fr=so.com&src=home_suggst_b&q="+data.data;
+
+	}
+
+
+</script>
+</html>

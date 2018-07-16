@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <script src="../js/jquery.min.js"></script>
+</head>
+<body>
+<div id="time"></div>
+<button class="stop" onclick="stopTime()">停止</button>
+<input type="text" class="timeWord" value="0">
+<script>
+    var hour = 0,
+            minute = 0,
+            second = 0;
+    var flag;
+    var time;
+    function studyTime(t,ele) {
+        console.log(t+","+ele);
+        hour = Math.floor(t / 60 / 60);
+        minute = Math.floor(t / 60 % 60);
+        second = Math.floor(t % 60);
+        if(hour < 10) {
+            hour = "0" + hour;
+        }
+        if(minute < 10) {
+            minute = "0" + minute;
+        }
+        if(second < 10) {
+            second = "0" + second;
+        }
+        $('#'+ ele).html(hour +":"+ minute +":"+ second);
+//    t++;
+    }
+//    className('time');
+//    function className(a){
+//        var b= a+"";
+//        console.log(b);
+//        add(b);
+//    }
+    function add(){
+        t=$('.timeWord').val();
+        t++;
+        studyTime(t,'time');
+        $('.timeWord').val(t);
+    }
+    flag = setInterval(add, 1000);
+    //终止计时器
+    function stopTime()
+    {
+        clearInterval(flag);
+        $('.timeWord').val(0)
+    }
+</script>
+</body>
+</html>

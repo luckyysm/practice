@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>点聚合</title>
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+    <script src="http://webapi.amap.com/maps?v=1.4.2&key=f6af2ece58d15c88e10a335b0e39cae3&plugin=AMap.MarkerClusterer"></script>
+    <!--<script src="http://webapi.amap.com/maps?v=1.4.2&key=f6af2ece58d15c88e10a335b0e39cae3"></script>-->
+    <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<div class="button-group">
+    <input type="button" class="button" value="默认样式" id="add0" onclick = 'addCluster(0)'/>
+    <input type="button" class="button" value="自定义图标" id="add1" onclick = 'addCluster(1)'/>
+    <input type="button" class="button" value="完全自定义" id="add2" onclick = 'addCluster(2)'/>
+</div>
+<script src="http://a.amap.com/jsapi_demos/static/china.js"></script>
+<script>
+    var cluster, markers = [];
+    var map = new AMap.Map("container", {
+        resizeEnable: true,
+        center:[105,34],
+        zoom: 4
+    });
+    for(var i=0;i<points.length;i+=1){
+        markers.push(new AMap.Marker({
+            position:points[i]['lnglat'],
+            content: '<div style="background-color: hsla(180, 100%, 50%, 0.7); height: 24px; width: 24px; border: 1px solid hsl(180, 100%, 40%); border-radius: 12px; box-shadow: hsl(180, 100%, 50%) 0px 0px 1px;"></div>',
+            offset: new AMap.Pixel(-15,-15)
+        }))
+    }
+//    console.log(map.getZoom());
+    var count  = markers.length;
+    var _renderCluserMarker = function (context) {
+//        console.log("点击" + map.getZoom());
+
+        var factor = Math.pow(context.count/count,1/18)
+        var div = document.createElement('div');
+        var Hue = 180 - factor* 180;
+        var bgColor = 'hsla('+Hue+',100%,50%,0.7)';
+        var fontColor = 'hsla('+Hue+',100%,20%,1)';
+        var borderColor = 'hsla('+Hue+',100%,40%,1)';
+        var shadowColor = 'hsla('+Hue+',100%,50%,1)';
+        div.style.backgroundColor = bgColor;
+        var size = Math.round(30 + Math.pow(context.count/count,1/5) * 20);
+        div.style.width = div.style.height = size+'px';
+        div.style.border = 'solid 1px '+ borderColor;
+        div.style.borderRadius = '50%';
+        div.style.boxShadow = '0 0 1px '+ shadowColor;
+        div.innerHTML = context.count;
+        div.style.lineHeight = size+'px';
+        div.style.color = fontColor;
+        div.style.fontSize = '14px';
+        div.style.textAlign = 'center';
+        context.marker.setOffset(new AMap.Pixel(-size/2,-size/2));
+        context.marker.setContent(div)
+    }
+    addCluster(2);
+
+    function addCluster(tag) {
+        if (cluster) {
+            console.log(cluster);
+            cluster.setMap(null);
+        }
+        if (tag == 2) {//完全自定义
+            cluster = new AMap.MarkerClusterer(map,markers,{
+                gridSize:80,
+                renderCluserMarker:_renderCluserMarker
+            });
+        } else if (tag == 1) {//自定义图标
+            var sts = [{
+                url: "http://a.amap.com/jsapi_demos/static/images/blue.png",
+                size: new AMap.Size(32, 32),
+                offset: new AMap.Pixel(-16, -16)
+            }, {
+                url: "http://a.amap.com/jsapi_demos/static/images/" +
+                "" +
+                "" +
+                "" +
+                "" +
+                "green.png",
+                size: new AMap.Size(32, 32),
+                offset: new AMap.Pixel(-16, -16)
+            }, {
+                url: "http://a.amap.com/jsapi_demos/static/images/orange.png",
+                size: new AMap.Size(36, 36),
+                offset: new AMap.Pixel(-18, -18)
+            },{
+                url: "http://a.amap.com/jsapi_demos/static/images/red.png",
+                size: new AMap.Size(48, 48),
+                offset: new AMap.Pixel(-24, -24)
+            },{
+                url: "http://a.amap.com/jsapi_demos/static/images/darkRed.png",
+                size: new AMap.Size(48, 48),
+                offset: new AMap.Pixel(-24, -24)
+            }];
+            cluster = new AMap.MarkerClusterer(map, markers, {
+                styles: sts,
+                gridSize:80
+            });
+        } else {//默认样式
+            cluster = new AMap.MarkerClusterer(map, markers,{gridSize:80});
+        }
+    }
+</script>
+
+<script>
+    //AMap.MarkerClusterer
+
+    (function(config){(function(a,b){function c(a){var c=b.createElement("script");c.charset="utf-8";c.src=a;(a=h||k)&&a.appendChild(c)}function d(){var a=["v="+config[4],"key="+config[0],"cache=0"];config[7]&&a.push("plugin="+config[7]);config[5]&&a.push("callback="+config[5]);for(var d=config[2]+"/maps?"+a.join("&"),a=config[2].split(",")[0],e=b.getElementsByTagName("script"),g,h=0;h<e.length;h+=1)if(0===e[h].src.indexOf(a.split(":")[1]+"/maps?")){g=e[h];break}config[5]||g&&g.async?c(d):(b.write('<script crossorigin="anonymous" id="amap_main_js" src="'+
+            d+'" type="text/javascript">\x3c/script>'),setTimeout(function(){b.getElementById("amap_main_js")||c(d)},1))}function e(){for(var a in localStorage)localStorage.hasOwnProperty(a)&&0===a.indexOf("_AMap_")&&localStorage.removeItem(a)}var g=function(){var a=!1;try{var b=(new Date).getTime();localStorage.setItem("_test",b);localStorage.getItem("_test")==b&&(a=!0)}catch(c){}return a}(),h=b.head||b.getElementsByTagName("head")[0],k=b.body||b.getElementsByTagName("body")[0];if(g)try{var l=JSON.parse(localStorage.getItem("_AMap_raster"));
+        if("1514444690399"===l.version)config.yv=!0,eval(l.script);else throw e(),Error("localStorage's version is "+l.version+", but the latest version is 1514444690399");}catch(m){d()}else d()})(window,document);
+    })(["f6af2ece58d15c88e10a335b0e39cae3",[115.423411,39.442758,117.514625,41.060816,116.405285,39.904989],"http://webapi.amap.com",1,"1.4.2",null,"110000","AMap.MarkerClusterer",true,true,true,true,"1514985410-1"])
+
+
+
+    (function(config){(function(a,b){function c(a){var c=b.createElement("script");c.charset="utf-8";c.src=a;(a=h||k)&&a.appendChild(c)}function d(){var a=["v="+config[4],"key="+config[0],"cache=0"];config[7]&&a.push("plugin="+config[7]);config[5]&&a.push("callback="+config[5]);for(var d=config[2]+"/maps?"+a.join("&"),a=config[2].split(",")[0],e=b.getElementsByTagName("script"),g,h=0;h<e.length;h+=1)if(0===e[h].src.indexOf(a.split(":")[1]+"/maps?")){g=e[h];break}config[5]||g&&g.async?c(d):(b.write('<script crossorigin="anonymous" id="amap_main_js" src="'+
+            d+'" type="text/javascript">\x3c/script>'),setTimeout(function(){b.getElementById("amap_main_js")||c(d)},1))}function e(){for(var a in localStorage)localStorage.hasOwnProperty(a)&&0===a.indexOf("_AMap_")&&localStorage.removeItem(a)}var g=function(){var a=!1;try{var b=(new Date).getTime();localStorage.setItem("_test",b);localStorage.getItem("_test")==b&&(a=!0)}catch(c){}return a}(),h=b.head||b.getElementsByTagName("head")[0],k=b.body||b.getElementsByTagName("body")[0];if(g)try{var l=JSON.parse(localStorage.getItem("_AMap_raster"));
+        if("1514444690399"===l.version)config.yv=!0,eval(l.script);else throw e(),Error("localStorage's version is "+l.version+", but the latest version is 1514444690399");}catch(m){d()}else d()})(window,document);
+    })(["f6af2ece58d15c88e10a335b0e39cae3",[115.423411,39.442758,117.514625,41.060816,116.405285,39.904989],"http://webapi.amap.com",1,"1.4.2",null,"110000","",true,true,true,true,"1514985410-1"])
+</script>
+</body>
+</html>

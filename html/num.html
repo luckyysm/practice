@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+        //一种 遍历两遍
+        // var twoSum = function (nums, target) {
+          
+        //     var newArr = [];
+        //     for (var i = 0; i < nums.length; i++) {
+        //         for (var j = i+1; j < nums.length; j++) {
+        //             var first = Number(nums[i]);
+        //             var second = Number(nums[j]);
+        //             var total = Number(target);
+        //             if (first + second == total) {
+        //                 newArr.push(first,second);
+        //                 // newArr.push(second);
+        //                 return newArr;
+        //             } else {
+                     
+        //                 continue;
+        //             }
+
+        //         }
+        //     }
+
+        // };
+
+        //第二种 哈希
+
+        /*var twoSum2 = function(nums, target){
+            var arr =[];
+            for(var i = 0;i<nums.length;i++){
+                var second = target - nums[i];
+                if(nums.indexOf(second)!== -1 && nums.indexOf(second) !== i){
+                    arr.push(i, nums.indexOf(second));
+                    return arr;
+                }
+            }
+        }
+
+        $(function () {
+            var MobileUA = (function () {
+                var ua = navigator.userAgent.toLowerCase();
+
+                var mua = {
+                    IOS: /ipod|iphone|ipad/.test(ua), //iOS  
+                    IPHONE: /iphone/.test(ua), //iPhone  
+                    IPAD: /ipad/.test(ua), //iPad  
+                    ANDROID: /android/.test(ua), //Android Device  
+                    WINDOWS: /windows/.test(ua), //Windows Device  
+                    TOUCH_DEVICE: ('ontouchstart' in window) || /touch/.test(ua), //Touch Device  
+                    MOBILE: /mobile/.test(ua), //Mobile Device (iPad)  
+                    ANDROID_TABLET: false, //Android Tablet  
+                    WINDOWS_TABLET: false, //Windows Tablet  
+                    TABLET: false, //Tablet (iPad, Android, Windows)  
+                    SMART_PHONE: false //Smart Phone (iPhone, Android)  
+                };
+
+                mua.ANDROID_TABLET = mua.ANDROID && !mua.MOBILE;
+                mua.WINDOWS_TABLET = mua.WINDOWS && /tablet/.test(ua);
+                mua.TABLET = mua.IPAD || mua.ANDROID_TABLET || mua.WINDOWS_TABLET;
+                mua.SMART_PHONE = mua.MOBILE && !mua.TABLET;
+
+                return mua;
+            }());
+
+            // console.log(MobileUA.SMART_PHONE);
+            //SmartPhone   
+            if (MobileUA.SMART_PHONE) {
+                alert("mobile");
+                // 移动端链接地址 
+                // document.location.href = 'http://ju.i-ev.com/index.html?source=' + Open_text;
+            }
+        }); 
+
+        var result = twoSum2([1,4,5,3,2],10)
+        console.log(result); */
+
+
+        //两数相加 
+        // var addTwoNumbers = function (l1, l2) {
+        //     var onel = l1.length,
+        //         otherl = l2.length;
+        //     var one = l1[onel - 1] * Math.pow(10, onel - 1) + l1[onel - 2] * Math.pow(10, onel - 2) + l1[onel - 3] * Math.pow(10, onel - 3);
+        //     var other = l2[otherl - 1] * Math.pow(10, otherl - 1) + l2[otherl - 2] * Math.pow(10, otherl - 2) + l2[otherl - 3] * Math.pow(10, otherl - 3);
+        //     var add = one + other + "";
+        //     var newadd = add.split("");
+        //     newadd.reverse();
+
+        //     return newadd;
+
+        // };
+        // var num = addTwoNumbers([2,4,3],[5,6,4]);
+        // console.log(num);
+
+
+        //反转整数 
+        // var reverse = function (x) {
+        //     var str,newnum;
+
+        //     str = Math.abs(x) + "";
+        //     newnum = Number(str.split("").reverse().join(""));
+
+        //     if (x >= 0 && newnum<= Math.pow(2, 31) - 1 ) { 
+        //         return newnum 
+        //     } else if(x<0 && newnum >= Math.pow(-2, 31) ){ 
+        //         return -newnum 
+        //     }else{
+        //         return 0;
+        //     }
+      
+            
+
+        // };
+        // console.log(reverse(120));
+
+        //回文数： 从左至右读与从右至左读一样
+        // var isPalindrome = function (x) {
+        //     if (x < 0) {
+        //         return false;
+        //     }
+        //     var str = x + "";
+        //     var daostr = Number(str.split("").reverse().join(""));
+        //     console.log(daostr);
+        //     if (x === daostr) {
+        //         return true;
+        //     } else {
+        //         return false;
+        //     }
+
+
+        // };
+        // console.log(isPalindrome(121));
+
+
+        // function count(str){
+  
+        //     newCountUp(str,0,0,100,2,options).start();
+            
+        // }
+        // count("sqs_count");
+   
+        //无重复字符的最长子串
+
+        // var lengthOfLongestSubstring = function (s) {
+        //     if (s === "") { return 0 };
+        //     var arr = s.split("");
+        //     var newarr = [arr[0]];
+        //     var newstr = arr[0];
+        //     var length = 1; //字符串的长度
+        //     var index = 0; //重复下标
+        //     var substr = ""; //截取之后的字符串
+
+        //     for (var i = 0; i < arr.length - 1; i++) {
+
+        //         newstr = newarr.join("");
+
+        //         index = newstr.indexOf(arr[i + 1]);
+
+        //         //下一位与之前的字符串是否有某个字节相同
+        //         if (index > -1) {
+        //             length = Math.max(newstr.length, length);
+        //             newstr = newstr + arr[i + 1];
+        //             substr = newstr.substring(index + 1);
+
+        //             newarr = substr.split("");
+
+        //         } else {
+        //             newarr.push(arr[i + 1]);
+
+        //         }
+
+        //     }
+        //     return (Math.max(length, newarr.length));
+
+
+        // };
+        // lengthOfLongestSubstring("werr");
+
+        //盛最多水的容器
+
+        // var maxArea = function (height) {
+        //     //第一个数 ，第二个数，两数之间较小的数，最大区域
+        //     let first,second,miny,maxy,maxarea,newarr=[], minyindex;
+
+        //     // for (let i = 0;i<height.length;i++){
+        //         // if(height[i] === 0) continue;
+        //         first = height[0];
+        //         second = height[1];
+        //         miny = Math.min(first,second);
+        //         maxy = Math.max(first,second);
+        //         minyindex = height.indexOf(miny);
+        //         maxarea = 1 * miny;
+        //         newarr.push(first,second);
+        //         for(var j = 2; j<height.length;j++){
+        //             // if()
+        //             if(height[j] > miny/j ){
+        //                 newarr.splice(minyindex,1);
+        //                 newarr.push(height[j]);
+        //                 miny = Math.min(maxy,height[j]);
+        //                 maxy = Math.max(maxy, height[j]);
+        //                 minyindex = height.indexOf(miny);
+        //                 maxarea = j* miny;
+        //             }else{
+        //                 continue;
+        //             }
+
+        //         }
+        //         // return maxarea;
+        //         return {"miny":miny,"maxy":maxy,"maxarea":maxarea};
+
+        //     // }
+            
+
+        // };    
+        // var  result = maxArea([1,2,4,3]);
+        // console.log(result);
+
+        //roman number
+        var romanToInt = function (s) {
+          
+            var v = s.indexOf("IV"), x = s.indexOf("IX"), l = s.indexOf("XL"), c = s.indexOf("XC"), d = s.indexOf("CD"), m = s.indexOf("CM");
+            if (v > -1 || x > -1 || l > -1 || c > -1 || d > -1 || m > -1) {
+                var s = s.replace(/IV/g, 'A').replace(/IX/g, 'B').replace(/XL/g, 'G').replace(/XC/g, 'H').replace(/CD/g, 'E').replace(/CM/g, 'F');
+
+            }
+            var arrs = s.split("");
+            var num = 0, i = 0;
+
+            while (i < arrs.length) {
+                switch (arrs[i]) {
+                    case "I": num += 1; break;
+                    case "V": num += 5; break;
+                    case "X": num += 10; break;
+                    case "L": num += 50; break;
+                    case "C": num += 100; break;
+                    case "D": num += 500; break;
+                    case "M": num += 1000; break;
+                    case "A": num += 4; break;
+                    case "B": num += 9; break;
+                    case "G": num += 40; break;
+                    case "H": num += 90; break;
+                    case "E": num += 400; break;
+                    case "F": num += 900; break;
+                }
+                i++;
+            }
+            return num;
+
+        };
+        var result = romanToInt("MCMXCIV");
+        console.log(result);
+
+
+
+    </script>
+    
+</body>
+</html>

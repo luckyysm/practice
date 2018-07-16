@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rotate</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .wrap{
+            width:260px;
+            height:250px;
+            position: relative;
+        }
+        .box{
+            width:250px;
+            height: 250px;
+            background-color: lightgreen;
+            margin:200px;
+            border-radius: 45%;
+            transform: rotate(360deg);
+            /*transition:all 4s ease;*/
+            animation: rotate 3s infinite linear;
+            position: absolute;
+
+            left: 5px;
+            top: 5px;
+            z-index: 2;
+
+        }
+        .outer{
+            width:260px;
+            height: 260px;
+            background-color: rgba(0,0,0,0.5);
+            position: absolute;
+            z-index: 1;
+            animation: rotate 3s infinite 0.7s linear;
+            left: 0;
+            top: 0;
+            transform: rotate(35deg);
+
+
+        }
+        @keyframes rotate {
+            0% {
+                transform: translate(0%, 0) rotateZ(0deg);
+            }
+            50% {
+                transform: translate(0%, 0%) rotateZ(180deg);
+            }
+            100% {
+                transform: translate(0%, 0%) rotateZ(360deg);
+            }
+
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+
+    <div class="box">
+
+    </div>
+
+    <div class="box outer">
+
+    </div>
+</div>
+</body>
+</html>
