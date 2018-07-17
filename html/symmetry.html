@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>leetcode</title>
+</head>
+<body>
+    <script>
+        // function verification(first,second){
+        //     console.log(first);
+        //     console.log(second);
+        //     if(first === "(" && second === ")"){
+        //         return true;
+
+        //     }else if(first === "{" && second === "}"){
+        //         return true;
+        //     }else if(first === "[" && second === "]"){
+        //         return true;
+
+        //     }else{
+        //         return false;
+
+        //     }
+
+        // }
+        var isValid = function (s) {
+            var mapping = {
+                "}" : "{",
+                "]" : "[",
+                ")" : "("
+            };
+            var arr = [];
+            for(var i = 0; i<s.length; i++){
+                if( s[i] === "}" || s[i] === ")" || s[i] === "]"){
+                    if( arr[arr.length-1] === mapping[s[i]] ){
+                        arr.pop();
+                        continue;
+                    }else{
+                        return false;
+                    }
+
+                }else{
+                    // console.log(s[i]);
+                    arr.push(s[i]);
+                }
+            }
+            // console.log(arr);
+            return arr.length === 0 ? true : false ;
+            // var result;
+            // var resultArr=[];
+            // var length = s.length;
+            // if(length % 2 !== 0) return false;
+            // if(s==="") return true;
+            // else{
+            //     var arr = s.split("");
+            //     for(var i = 0;i< length/2 ; i++){
+            //         result = verification(arr[i],arr[length-1-i]);
+            //         if(result === false){
+            //             break;
+            //         }
+                
+            //     }
+
+            // }
+            // return result;
+
+        };
+        // console.log( isValid("(){{([])}}{[]}"));
+
+        //最长公共前缀
+        // var longestCommonPrefix = function (strs) {
+
+        //     if(strs.length === 0){
+        //         return "";
+        //     }else if(strs.length === 1 || strs[0] === ""){
+        //         return strs[0];
+        //     }
+        //     var target = strs[0];
+        //     var comstr = "";
+        //     for(var i = 0;i< target.length;i++){
+        //         for(var j = 1; j < strs.length ; j++){
+        //             if(strs[j].indexOf(target[i]) === i){
+        //                 comstr+=target[i];
+        //                 continue;
+        //             }else{
+        //                 return target.substring(0,i);
+        //             }
+        //         }
+        //     }
+        //     return comstr;
+        // };
+        // console.log(longestCommonPrefix(["a","a"]));
+    </script>
+    
+</body>
+</html>
