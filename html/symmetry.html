@@ -78,6 +78,9 @@
             // else if(strs.length === 1){
             //     return strs[0];
             // }
+            // console.log(...strs.map((x) => x.length));
+            // console.log(...strs.map((value) => value));
+            // console.log(strs.join(" "));
             var target = strs[0];
             var comstr = "";
             for(var i = 0;i< target.length;i++){
@@ -93,7 +96,85 @@
             }
             return comstr;
         };
-        console.log(longestCommonPrefix(["aewfe"]));
+        // console.log(longestCommonPrefix(["aewfe","dfb","sd"]));
+        // console.log([1, 2, 3].map((x) => x * x));
+
+        //es6 箭头函数 this, 箭头函数内部的this被绑定为函数定义时的this，并且无法改变
+
+        /** 现在我们来解释箭头函数的this，其实箭头函数里是没有this的，而普通函数的是有this的。
+        但是普通函数在定义的时候并不知道自己的this要指向哪里，所以在被调用的时候普通函数里的this会指向调用它的那个对象。
+
+            而箭头函数因为本身没有this，它会直接绑定到它的词法作用域内的this，也就是定义它时的作用域内的this值。
+        通俗点说 就是它会直接绑定到它父级的执行上下文里的this。**/
+        var a = 1,
+        obj ={
+            a: 2,
+            fun : () => console.log(this),
+            obj2:{
+                a:3,
+                fun3:function(){
+                    // return this.a;
+                    console.log(this.a);
+                },
+                fun4:()=> console.log(this.a)
+                
+            },
+            fun2 : function(){
+                // return this;
+                console.log(this.a);
+            }
+        }
+        // obj.fun().call(obj); //1
+        // obj.fun(); //1
+        // obj.fun2(); //2
+        // obj.obj2.fun3(); //3
+        // obj.obj2.fun4(); // 1
+        // var w = obj.fun2;
+        // w();//1
+
+        //简单的循环
+        // for (var i = 0; i < 5; i++) {
+        //     console.log(i);//0 1 2 3 4  
+        // }
+            
+        //倒计时的循环
+        // for (var i = 0; i < 5; i++) {
+        //     // console.log("aaaa");
+        //     (function(){
+        //         setTimeout(function () {
+        //             console.log(i);
+        //         }, 1000 * i);
+        //     })(i)
+        // }
+
+        //倒计时里面加个立即执行函数 
+        // for (var i = 0; i < 5; i++) {
+        //    setTimeout((function(){
+        //        console.log(i); //0 1 2 3 4
+        //    })(i),i*1000);
+        // }
+
+        // setTimeout(function () {
+        //     console.log("daojiashi")
+        // }, 0)
+        // console.log("qwe");
+
+        //Promise
+        setTimeout(function () {
+            console.log(1)
+        }, 0);
+        new Promise(function executor(resolve) {
+            console.log(2);
+            for (var i = 0; i < 10000; i++) {
+                i == 9999 && resolve();
+            }
+            console.log(3);
+        }).then(function () {
+            console.log(4);
+        });
+        console.log(5); //23541
+    
+
     </script>
     
 </body>
