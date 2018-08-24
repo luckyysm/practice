@@ -1,0 +1,67 @@
+
+<!doctype html>
+<html lang = "en">
+    <head>
+        <title></title>
+        <meta >
+    </head>
+    <body>
+        <script>
+            function template (){
+                car = "aodi";
+            }    
+            template();
+            console.log(car); // 如果没有调用template这个函数 ，则外部访问到的car是undefined;调用一次就会永久保存car的值；
+            console.log(null == undefined);//TRUE
+            var message = "hello";
+            if(message){
+                // alert("value");  
+            }
+            // ++ --
+            var o = {
+                valueOf: function(){
+                    return -1;
+                }
+
+            }
+            o--;
+            console.log(o);// -2
+            console.log(o++);//-2 直接输出o,然后再++;
+            var str = "";
+            str++;
+            console.log(str); //1          
+            // & | 返回的都是计算之后的值
+            var and = 10 & 3; 
+            console.log(and);
+            var or = 5 | 0;
+            console.log(or);
+            //右移
+            var right  = 23;
+            newright = right >> 3;
+            console.log(newright);
+            //for 循环 
+            for(var i = 0 ; i < 5 ; i++ ){
+                // alert(i); // 0 1 2 3 4
+            }
+            // alert(i); // 5
+            //函数重写 arguments
+
+            function sayHi(){
+                console.log("hi, my name is " + arguments[0] + ", I am " + arguments[1] + " years old;");
+            }
+            sayHi("ysm",22)
+            //声明变量 
+            function add(num1, num2){
+                var sum = num1 + num2;
+                return sum;
+            }
+            var result = add(10,20);
+            console.log(result); //30
+            console.log(sum); //chapter1.html:60 Uncaught ReferenceError: sum is not defined
+
+
+
+        </script>
+
+    </body>
+</html>

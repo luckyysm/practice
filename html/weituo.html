@@ -92,6 +92,18 @@
 //    add();
 
 
+//数组去重
+var arr = [1,1,1,"1",2,4,5,"q3",NaN,NaN,undefined,undefined];
+//es6 set方法去重
+var arr2 = new Set(arr);
+
+console.log(typeof(arr2));
+console.log(arr2);
+console.log(arr2.constructor == String); //false    
+console.log([...arr2]);
+console.log([...arr2].constructor == String); //true
+
+
 
 
 </script>
